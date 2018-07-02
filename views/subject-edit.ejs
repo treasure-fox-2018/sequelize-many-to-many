@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>Edit Subject</title>
+  </head>
+  <body>
+    <h2><a href="/">Home</a></h2>
+    <br>
+    <form action="/subjects/edit/<%= subject.id %>" method="POST">
+      Subject Name: <br/>
+      <input type="text" name="subject_name" value="<%= subject.subject_name %>"> <br/>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

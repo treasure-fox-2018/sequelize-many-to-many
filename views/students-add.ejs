@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Add Student</title>
+  </head>
+  <body>
+    <h2><a href="/">Home</a></h2>
+    <br>
+    <% if (errMsg === null){ %>
+      <form action="/students/add" method="POST">
+        First Name: <br/>
+        <input type="text" name="first_name"> <br/>
+        Last Name: <br/>
+        <input type="text" name="last_name"> <br/>
+        Email: <br/>
+        <input type="text" name="email"> <br/>
+        <button type="submit">Submit</button>
+      </form>
+    <% } else { %>
+      <h3 style="background-color:red;"><%= errMsg %></h3>
+      <form action="/students/add" method="POST">
+        First Name: <br/>
+        <input type="text" name="first_name"> <br/>
+        Last Name: <br/>
+        <input type="text" name="last_name"> <br/>
+        Email: <br/>
+        <input style="background-color:red;" type="text" name="email"> <br/>
+        <button type="submit">Submit</button>
+      </form>
+    <% } %>
+  </body>
+</html>
+

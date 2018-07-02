@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Subjects Data</title>
+  </head>
+  <body>
+    <h2><a href="/">Home</a></h2>
+    <br>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Subject Name</th>
+        <th>Teacher</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% subjects.forEach(subject => { %>
+      <tr>
+        <td><%= subject.id%></td>
+        <td><%= subject.subject_name%></td>
+        <td>
+        <% subject.Teachers.forEach(teacher => { %>
+          <ol><%= teacher.first_name %> <%= teacher.last_name %></ol>
+        <%})%>
+        </td>
+        <td><a href="/subjects/edit/<%= subject.id %>">Edit</a></td>
+        <td><a href="/subjects/delete/<%= subject.id %>">Delete</a></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <br>
+  </body>
+</html>

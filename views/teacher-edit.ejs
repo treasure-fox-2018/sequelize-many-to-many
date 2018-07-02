@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Edit Teacher</title>
+  </head>
+  <body>
+    <h2><a href="/">Home</a></h2>
+    <br>
+    <form action="/teachers/edit/<%= teachers.id %>" method="POST">
+      First Name: <br/>
+      <input type="text" name="first_name" value="<%= teachers.first_name %>"> <br/>
+      Last Name: <br/>
+      <input type="text" name="last_name"  value="<%= teachers.last_name %>"> <br/>
+      Email: <br/>
+      <input type="text" name="email" value="<%= teachers.email %>"> <br/>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
