@@ -6,7 +6,6 @@ let Subject = models.Subject
 let Conj = models.StudentSubject
 
 router.get('/students', function (req, res) {
-
   Student.findAll()
     .then(function (dataStudents) {
       res.render('students', {
@@ -28,9 +27,12 @@ router.get('/students/delete/:id', function (req, res) {
     .then(function () {
       res.redirect('/students')
     })
+    .catch(function (err) {
+      console.log(err)
+    })
 })
 
-
+//add students
 router.get('/students/add', function (req, res) {
   res.render('student-add')
 })
@@ -50,13 +52,8 @@ router.post('/students/add', function (req, res) {
 })
 
 
-
-
-
-
-
+//edit students
 router.get('/students/edit/:id', function (req, res) {
-
   Student.findById(req.params.id)
     .then(function (student) {
       res.render('student-edit', {
@@ -66,13 +63,7 @@ router.get('/students/edit/:id', function (req, res) {
     .catch(function (err) {
       console.log(err)
     })
-
-
-
 })
-
-
-
 
 
 
@@ -86,6 +77,12 @@ router.get('/students/:id/add-subject', function (req, res) {
             subject
           })
         })
+        .catch(function (err) {
+          console.log(err)
+        })
+    })
+    .catch(function (err) {
+      console.log(err)
     })
 })
 
@@ -96,17 +93,13 @@ router.post('/students/:id/add-subject', function (req, res) {
       StudentId: req.params.id
 
     })
-    .then(function () {
+    .then(() => {
       res.redirect('/students')
     })
     .catch(function (err) {
       console.log(err)
     })
-
-
-
 })
-
 
 
 

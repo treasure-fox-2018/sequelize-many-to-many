@@ -6,9 +6,7 @@ let Subject = models.Subject
 let Conj = models.StudentSubject
 
 
-
-
-
+//show all subject and related data
 router.get('/subjects', function (req, res) {
   Subject.findAll({
       include: {
@@ -16,7 +14,6 @@ router.get('/subjects', function (req, res) {
       }
     })
     .then(function (subject) {
-      //  res.send(subject)
       res.render('subjects', {
         subject
       })
@@ -29,6 +26,7 @@ router.get('/subjects', function (req, res) {
 
 
 
+//list of students with theirs score
 router.get('/subjects/:id/enrolled-students', function (req, res) {
   Conj.findAll({
       include: ['Student', 'Subject'],
@@ -50,7 +48,7 @@ router.get('/subjects/:id/enrolled-students', function (req, res) {
 })
 
 
-
+//assign score to each student if score is NULL /empty
 router.get('/subjects/:id/give-score/:sid', function (req, res) {
   Conj.findAll({
       include: ['Student', 'Subject'],
@@ -61,7 +59,6 @@ router.get('/subjects/:id/give-score/:sid', function (req, res) {
       }
     })
     .then(function (x) {
-      //  res.send(x)
       res.render('give-score', {
         x
       })
@@ -74,7 +71,7 @@ router.get('/subjects/:id/give-score/:sid', function (req, res) {
 
 
 
-
+//post to assign score
 router.post('/subjects/:id/give-score/:sid', function (req, res) {
   Conj.update({
       StudentId: req.params.id,
@@ -84,56 +81,12 @@ router.post('/subjects/:id/give-score/:sid', function (req, res) {
       where: {
         StudentId: req.params.id,
         SubjectId: req.params.sid,
-
-
       }
     })
     .then(function () {
-
       res.redirect('/subjects')
-
-
     })
-
-
-
-
-
-
 })
-
-
-//
-// Subject.findById(req.params.id, {
-//     include: [
-//       {
-//         model: models.Student
-//
-//       }
-// ]
-//   })
-//   .then(function (subject) {
-//     //  res.send(JSON.stringify(subject.Students.id))
-//     Conj.findAll()
-//       .then(function (conj) {
-//
-//
-//
-//       })
-//
-//
-//
-//
-//
-//     res.render('enrolled-student', {
-//       subject
-//     })
-//
-//
-//   })
-
-
-// })
 
 
 module.exports = router
