@@ -30,26 +30,86 @@ router.get('/subjects', function (req, res) {
 
 
 router.get('/subjects/:id/enrolled-students', function (req, res) {
-
-  Subject.findById(req.params.id, {
-      include: [
-        {
-          model: models.Student
-
-        }
-  ]
+  Conj.findAll({
+      include: ['Student', 'Subject'],
+      where: {
+        SubjectId: req.params.id
+      }
     })
-    .then(function (subject) {
-
+    .then(function (x) {
       res.render('enrolled-student', {
-        subject
+        x
       })
-      // res.send(subject)
-
+    })
+    .catch(function (err) {
+      res.send(err)
+      console.log(err)
     })
 
 
 })
+
+
+
+router.get('/subjects/:id/give-score', function (req, res) {
+  // Conj.findAll({
+  //     include: ['Student', 'Subject'],
+  //     where: {
+  //       SubjectId: req.params.id
+  //     }
+  //   })
+  //   .then(function (x) {
+  //     res.render('enrolled-student', {
+  //       x
+  //     })
+  //   })
+  //   .catch(function (err) {
+  //     res.send(err)
+  //     console.log(err)
+  //   })
+  //
+  //
+  // })
+
+
+
+
+
+
+})
+
+
+//
+// Subject.findById(req.params.id, {
+//     include: [
+//       {
+//         model: models.Student
+//
+//       }
+// ]
+//   })
+//   .then(function (subject) {
+//     //  res.send(JSON.stringify(subject.Students.id))
+//     Conj.findAll()
+//       .then(function (conj) {
+//
+//
+//
+//       })
+//
+//
+//
+//
+//
+//     res.render('enrolled-student', {
+//       subject
+//     })
+//
+//
+//   })
+
+
+// })
 
 
 module.exports = router

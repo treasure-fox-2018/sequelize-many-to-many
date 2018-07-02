@@ -27,32 +27,48 @@
   </head>
 
   <body>
-    <h2 align="center"><%=subject.SubjectName%></h2>
+
+
+
+
+
+
+
+
+
+
+    <h2 align="center"><%=x[0].Subject.SubjectName %></h2>
+
+
     <table>
-
-
-
-
-
-
-
       <tr>
-        <th>name</th>
+        <th>Name</th>
         <th>Score</th>
 
       </tr>
-      <% subject.Students.forEach(function(murid){ %>
+      <% x.forEach(function(data){ %>
         <tr>
           <td>
-            <%=murid.firstName%>
-              <%=murid.lastName%>
+            <%=data.Student.firstName%>
+              <%=data.Student.lastName%>
           </td>
-          <td>50</td>
+          <td>
 
+
+            <%  if(data.score == null){ %>
+              <a href="/subjects/<%=data.Student.id%>/give-score">Give score</a>
+              <% } else { %>
+                <%= data.score%>
+
+                  <%    } %>
+          </td>
+          <% }) %>
         </tr>
-        <% }) %>
-
     </table>
+
+
+
+
 
   </body>
 
