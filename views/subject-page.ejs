@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Subject Registration Form</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+ </head>
+ <body>
+   <%- include("./partials/header.ejs") %>
+
+   <form action="/subject/add" method="post">
+   <div class="container">
+     <h1><%= Form %></h1>
+     <p><%= Message %></p>
+     <hr>
+
+     <label for="subject_name"><b>Subject Name</b></label>
+     <input type="text" placeholder="Enter Subject Name" name="subject_name">
+
+     <div class="clearfix">
+       <button type="submit" class="signupbtn" id="submit">Sign Up</button>
+     </div>
+   </div>
+ </form>
+
+   <footer>copyright 2018
+     <br>
+     Yusuf Siregar
+   </footer>
+ </body>
+</html>

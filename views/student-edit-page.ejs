@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Student Edit Form</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+ </head>
+ <body>
+   <%- include("./partials/header.ejs") %>
+
+   <form action="/student/edit/<%= id %>" method="post">
+   <div class="container">
+     <h1><%= Form %></h1>
+     <p><%= Message %></p>
+     <hr>
+
+     <label for="first_name"><b>First Name</b></label>
+     <input type="text" placeholder="Enter First Name" name="first_name">
+
+     <label for="last_name"><b>Last Name</b></label>
+     <input type="text" placeholder="Enter Last Name" name="last_name">
+
+     <label for="email"><b>Email</b></label>
+     <input type="text" placeholder="Enter Email" name="email">
+
+     <div class="clearfix">
+       <button type="submit" class="btn" id="submit">Edit</button>
+     </div>
+   </div>
+ </form>
+
+   <footer>copyright 2018
+     <br>
+     Yusuf Siregar
+   </footer>
+ </body>
+</html>

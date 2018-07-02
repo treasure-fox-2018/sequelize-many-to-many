@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: new Date(),
   }, {});
   Subject.associate = function(models) {
-    Subject.hasMany(models.Teacher)
+    Subject.hasMany(models.Teacher);
+    Subject.belongsToMany(models.Student, {through: "StudentSubject"});
   };
   return Subject;
 };

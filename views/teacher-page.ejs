@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Teacher Registration Form</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <%- include("./partials/header.ejs") %>
+
+    <form action="/teacher/add" method="post">
+      <div class="container">
+        <h1><%= error_message %></h1>
+        <h1><%= Form %></h1>
+        <p>
+          <%= Message %>
+        </p>
+        <hr>
+
+        <label for="first_name"><b>First Name</b></label>
+        <input type="text" placeholder="Enter First Name" name="first_name">
+
+        <label for="last_name"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" name="last_name">
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email">
+
+        <select name="SubjectId">
+          <%= subjects %>
+          <% subjects.forEach(function(subject) { %>
+          <option value="<%= subject.id %>"><%= subject.subject_name %></option>
+          <% }) %>
+        </select>
+
+        <div class="clearfix">
+          <button type="submit" class="signupbtn" id="submit">Sign Up</button>
+        </div>
+      </div>
+    </form>
+
+    <footer>copyright 2018
+      <br> Yusuf Siregar
+    </footer>
+</body>
+
+</html>

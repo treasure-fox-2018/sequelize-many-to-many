@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: new Date(),
   }, {});
   Student.associate = function(models) {
-    // associations can be defined here
+    Student.belongsToMany(models.Subject, {through: "StudentSubject"});
   };
   return Student;
 };

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Subject Data</title>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+</head>
+
+<body>
+  <%- include("./partials/header.ejs") %>
+    <h1>Subject Data</h1>
+    <table class="table">
+      <thead style="background: #DE9139">
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Subject Name</th>
+          <th scope="col">Teacher(s)</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (var i = 0; i < data.length; i++) { %>
+          <tr>
+            <td>
+              <%= i + 1 %>
+            </td>
+            <td>
+              <%= data[i].subject_name %>
+            </td>
+            <td>
+              <ol>
+                <% var teachersName = subject_helper(data[i]) %>
+                  <% for (var j = 0; j < teachersName.length; j++) { %>
+                    <li>
+                      <%= teachersName[j] %>
+                    </li>
+                    <%  } %>
+              </ol>
+
+            </td>
+            <td>
+              <a href="subject/edit/<%=  data[i].id %>">Edit</a>
+              <a href="subject/delete/<%=  data[i].id %>">Delete</a>
+            </td>
+          </tr>
+          <% } %>
+      </tbody>
+      <li><a href="/subject/add">Add</a></li>
+
+</body>
+
+</html>

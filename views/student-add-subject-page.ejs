@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Student Add Subject Form</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <%- include("./partials/header.ejs") %>
+
+  <h1><%= Form %></h1>
+  <p>
+    <%= Message %>
+  </p>
+  <hr>
+
+
+  <table class="table">
+    <thead style="background: #DE9139">
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <%= data.first_name %>
+        </td>
+        <td>
+          <%= data.last_name %>
+        </td>
+        <td>
+          <%= data.email %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+    <form action="/student/<%= id %>/add-subject/" method="post">
+      <div class="container">
+        <hr>
+
+        <select name="SubjectId">
+          <%= subjects %>
+          <% subjects.forEach(function(subject) { %>
+          <option value="<%= subject.id %>"><%= subject.subject_name %></option>
+          <% }) %>
+        </select>
+
+        <div class="clearfix">
+          <button type="submit" class="btn" id="submit">Apply</button>
+        </div>
+      </div>
+    </form>
+
+    <footer>copyright 2018
+      <br> Yusuf Siregar
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Subject Removal Form</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+  <%- include("./partials/header.ejs") %>
+
+  <form action="/subject/delete/<%= id %>" method="post">
+    <h1><%= Form %></h1>
+    <p><%= Message %></p>
+    <hr>
+
+  <div class="clearfix">
+    <button type="confirm" class="btn" name="confirm">Confirm</button>
+  </div>
+
+  <div class="clearfix">
+    <button type="back" class="btn" name="back">Back</button>
+  </div>
+
+  </form>
+
+  <footer>copyright 2018
+    <br> Yusuf Siregar
+  </footer>
+</body>
+
+</html>

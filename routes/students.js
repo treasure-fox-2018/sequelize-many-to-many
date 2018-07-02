@@ -1,12 +1,15 @@
 const app = require('express').Router();
 const ejs = require('ejs');
 const controller = require('../controller/students');
+const subject = require('../controller/subjects');
+const StudentSubject
 
 app.get('/student', (req, res) => {
   controller.showAllData()
     .then(studentData => {
+      // console.log(studentData[5].Subjects[0].subject_name)
       res.render('../views/student-dashboard', {
-        data: studentData
+        data: studentData,
       })
     })
     .catch(err => {
@@ -77,7 +80,41 @@ app.post("/student/delete/:id", function(req, res) {
   res.redirect('/student')
 })
 
-app.get("/student/:id/add-subject")
+app.get("/student/:id/add-subject", function(req, res) {
+  controller.findById(req.params.id)
+    .then(studentData => {
+      // console.log(studentData[5].Subjects[0].subject_name)
+      subject.showAllData()
+      .then((subjectData) => {
+        res.render('../views/student-add-subject-page', {
+          id: req.params.id,
+          Form: "Student Add Subject",
+          Message: "Please Choose a Subject",
+          data: studentData,
+          subjects: subjectData,
+        })
+      })
+    })
+    .catch(err => {
+      res.send(err);
+    })
+  // res.end();
+})
+
+app.post("/student/:id/add-subject", function(req, res) {
+  let input = req.body;
+  controller.addTeacher(input.first_name, input.last_name, input.email, input.SubjectId)
+  .then(() => {
+    res.redirect('/teacher')
+  })
+  .catch((err) => {
+    res.render('../views/teacher-page', {
+      Form: "Teacher Registration",
+      Message: "Enter Information Below",
+      error_message: err.message
+    })
+  })
+})
 
 
 module.exports = app;

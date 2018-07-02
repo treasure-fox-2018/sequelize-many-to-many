@@ -2,13 +2,25 @@ const models = require('../models');
 const Sequelize = require('Sequelize');
 const Op = Sequelize.Op;
 
+
+
 class studentsController {
   static showAllData() {
     return models.Student.findAll({
       order: [
         ["id", "ASC"]
-      ]
+      ],
+      include: [{
+        model: models.Subject,
+        through:{
+          attributes: ["subject_name"],
+        }
+      }]
     });
+  }
+
+  static findById(studentId) {
+    return models.Student.findById(Number(studentId))
   }
 
   static addStudent(first_name, last_name, email) {
@@ -62,6 +74,7 @@ class studentsController {
       })
     )
   }
+
 }
 
 module.exports = studentsController;
