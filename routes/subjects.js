@@ -40,19 +40,13 @@ router.get('/subjects/:id/enrolled-students', function (req, res) {
   ]
     })
     .then(function (subject) {
-      // res.render('enrolled-student', {
-      //   subject
-      // })
-      res.send(subject)
+
+      res.render('enrolled-student', {
+        subject
+      })
+      // res.send(subject)
 
     })
-
-  // res.render('enrolled-student')
-
-
-
-
-
 
 
 })
