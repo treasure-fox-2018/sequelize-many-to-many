@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <title>Teachers Data</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- <script src="main.js"></script> -->
+</head>
+
+<body>
+    <h1>
+        <%= title %>
+    </h1>
+
+    <br>
+    <table border="2">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Options</th>
+        </tr>
+        <% teachersData.forEach( teacher => { %>
+            <tr>
+                <td>
+                    <%= teacher.id %>
+                </td>
+                <td>
+                    <%= teacher.firstName %>
+                </td>
+                <td>
+                    <%= teacher.lastName %>
+                </td>
+                <td>
+                    <%= teacher.email %>
+                </td>
+                <% if(teacher.SubjectId == null) { %>
+                    <td>unassigned</td>
+                    <% } else { %>
+                        <td><%= teacher.Subject.subjectName %>  </td>
+                        <% } %>
+                <td>
+                    <a href="/teachers/edit/<%=teacher.id%>">Edit</a> ||
+                    <a href="/teachers/delete/<%=teacher.id%>" onclick="return confirm('Are you sure you want to delete this teacher\'s data?')">
+                    Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+    </table>
+    <br>
+    <br>
+    <a href="/">Back to Home</a>
+    <a href="/teachers/add">Add Teacher</a>
+</body>
+
+</html>

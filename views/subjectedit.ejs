@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <title>Subjects</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <!-- <script src="main.js"></script> -->
+</head>
+<body>
+    <h1><%= title %></h1>
+    <div>
+        <form action="/subjects/edit/<%= editSubject.id %>" method="post">
+        Subject Name:<br><input type="text" name="subjectName" placeholder="Subject" value="<%= editSubject.subjectName %>"><br><br>
+        <button type="submit" value="Confirm Edit">Confirm Edit</button>
+        </form>
+    </div>
+    <br>
+    <a href="/subjects">Back to Subjects List</a>
+    <br><br>
+    <a href="/">Back to Homepage</a>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <title>Students Data</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- <script src="main.js"></script> -->
+</head>
+
+<body>
+    <h1>
+        <%= title %>
+    </h1>
+
+    <br>
+    <table border="2">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+            <th>Options</th>
+        </tr>
+        <% studentsData.forEach(student => { %>
+            <tr>
+                <td>
+                    <%= student.id %>
+                </td>
+                <td>
+                    <%= student.firstName %>
+                </td>
+                <td>
+                    <%= student.lastName %>
+                </td>
+                <td>
+                    <%= student.email %>
+                </td>
+                <td>
+                    <a href="/students/<% student.id%>add-subject">Add Subject</a>
+                </td>
+                <td>
+                    <a href="/students/edit/<%=student.id%>">Edit</a> ||
+                    <a href="/students/delete/<%=student.id%>" onclick="return confirm('Are you sure you want to delete this student\'s data?')">
+                        Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+    </table>
+    <br>
+    <br>
+    <a href="/">Back to Home</a>
+    <a href="/students/add">Add Student</a>
+</body>
+
+</html>
