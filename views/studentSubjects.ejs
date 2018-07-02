@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+h2, p {
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<h2>All Students Subjects Data</h2>
+<table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% studentSubjectsData.forEach(studentSubject => { %>
+        <tr>
+          <td><%= studentSubject.StudentId %></td>
+          <% if(studentSubject.score !== null){ %>
+            <td>studentSubject.score</td>
+          <% } else { %>
+            <td><a href="/subjects/<%=studentSubject.id%>/give-score">Give Score</a></td>
+          } %>
+        </tr>
+      <% })%>
+    </tbody>
+  </table>
+</body>
+</html>
+

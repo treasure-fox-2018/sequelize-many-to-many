@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Add Subject To Student</h2>
+  <form action="/students/<%=students.id%>/add-subject" method="POST">
+    First name:<br>
+    <input type="text" name="firstName" value="<%=students.firstName %>">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastName" value="<%=students.lastName %>">
+    <br>
+    Email:<br>
+    <input type="text" name="email" value="<%=students.email %>">
+    <br>
+    Choose Subject:<br>
+    <select name= "SubjectId">
+          <option value="1">Math</option>
+          <option value="2">Geography</option>
+          <option value="3">Fisika</option>
+        </select>
+    <br><br>
+    <input type="submit" value="Add Subject">
+  </form> 
+</body>
+</html>
