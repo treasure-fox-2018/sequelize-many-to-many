@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      input[type=text],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+      }
+
+      input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+
+      .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+
+      table {
+        margin-top: 100px;
+        margin-left: 100px;
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 50%;
+        border: 1px solid #ddd;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 16px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2
+      }
+    </style>
+    <meta charset="utf-8">
+    <title>enrolled students</title>
+  </head>
+
+  <body>
+
+
+
+
+
+
+
+
+
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Subject</th>
+        <th>Score</th>
+
+      </tr>
+      <% x.forEach(function(data){ %>
+        <tr>
+          <td>
+
+            <%=data.Student.firstName%>
+              <%=data.Student.lastName%>
+          </td>
+          <td>
+            <%=data.Subject.SubjectName%>
+          </td>
+          <td>
+
+            <form action="/subjects/<%=data.Student.id%>/give-score/<%=x[0].Subject.id%>" method="post">
+              <%  if(data.score == null){ %>
+                <input type="text" name="score">
+                <% } else { %>
+                  <%= data.score%>
+
+                    <%    } %>
+                      <input type="submit" value="Submit">
+
+
+            </form>
+          </td>
+          <% }) %>
+
+
+        </tr>
+    </table>
+
+
+
+
+
+  </body>
+
+</html>

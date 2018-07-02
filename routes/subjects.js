@@ -51,25 +51,49 @@ router.get('/subjects/:id/enrolled-students', function (req, res) {
 
 
 
-router.get('/subjects/:id/give-score', function (req, res) {
-  // Conj.findAll({
-  //     include: ['Student', 'Subject'],
-  //     where: {
-  //       SubjectId: req.params.id
-  //     }
-  //   })
-  //   .then(function (x) {
-  //     res.render('enrolled-student', {
-  //       x
-  //     })
-  //   })
-  //   .catch(function (err) {
-  //     res.send(err)
-  //     console.log(err)
-  //   })
-  //
-  //
-  // })
+router.get('/subjects/:id/give-score/:sid', function (req, res) {
+  Conj.findAll({
+      include: ['Student', 'Subject'],
+      where: {
+        StudentId: req.params.id,
+        SubjectId: req.params.sid
+
+      }
+    })
+    .then(function (x) {
+      //  res.send(x)
+      res.render('give-score', {
+        x
+      })
+    })
+    .catch(function (err) {
+      res.send(err)
+      console.log(err)
+    })
+})
+
+
+
+
+router.post('/subjects/:id/give-score/:sid', function (req, res) {
+  Conj.update({
+      StudentId: req.params.id,
+      SubjectId: req.params.sid,
+      score: req.body.score
+    }, {
+      where: {
+        StudentId: req.params.id,
+        SubjectId: req.params.sid,
+
+
+      }
+    })
+    .then(function () {
+
+      res.redirect('/subjects')
+
+
+    })
 
 
 

@@ -40,6 +40,8 @@
     <h2 align="center"><%=x[0].Subject.SubjectName %></h2>
 
 
+    <p align="center"><a href="/subjects">Return to the subject List</a></p>
+
     <table>
       <tr>
         <th>Name</th>
@@ -56,7 +58,7 @@
 
 
             <%  if(data.score == null){ %>
-              <a href="/subjects/<%=data.Student.id%>/give-score">Give score</a>
+              <a href="/subjects/<%=data.Student.id%>/give-score/<%=x[0].Subject.id%>">Give score</a>
               <% } else { %>
                 <%= data.score%>
 
