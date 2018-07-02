@@ -4,33 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
   <title>Enrolled students</title>
 </head>
 <body>
-  <h3><%= data[0].Subject.subject_name %></h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% data.forEach(instance => { %>
+  <div class="container">
+    <br>
+    <h3><%= data[0].Subject.subject_name %></h3>
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= `${instance.Student.first_name} ${instance.Student.last_name}` %></td>
-          <td>
-            <% if (instance.score === null) {%>
-              <a href="/subjects/<%= instance.id %>/give-score">
-              Give Score
-              </a>
-            <% } else { %>
-              <%= instance.score %>
-            <% } %>
-          </td>
+          <th>Name</th>
+          <th>Score</th>
         </tr>
-      <% }) %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% data.forEach(instance => { %>
+          <tr>
+            <td><%= `${instance.Student.first_name} ${instance.Student.last_name}` %></td>
+            <td>
+              <% if (instance.score === null) {%>
+                <a href="/subjects/<%= instance.id %>/give-score">
+                Give Score
+                </a>
+              <% } else { %>
+                <%= instance.score %>
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>

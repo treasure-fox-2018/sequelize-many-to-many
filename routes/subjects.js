@@ -142,7 +142,7 @@ router.post('/:id/give-score', (req, res) => {
   SubjectStudent.update({ score: req.body.score }, {
     where: { id: req.params.id }
   })
-  .then(() => res.redirect(`/subjects/${req.params.id}`))
+  .then(() => res.redirect(`/subjects`))
   .catch(err => res.send(err))
 })
 
