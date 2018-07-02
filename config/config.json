@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "handipriyono",
+    "password": null,
+    "database": "MANYtoMANY2",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

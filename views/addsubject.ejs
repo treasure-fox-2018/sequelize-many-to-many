@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <style>
+      input[type=text],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+      }
+
+      input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+
+      table {
+        margin-top: 40px;
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 50%;
+        margin-left: 100px;
+        border: 1px solid #ddd;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 16px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2
+      }
+    </style>
+    <title>Add table </title>
+  </head>
+
+  <body>
+
+    <table>
+      <tr>
+        <th>First name</th>
+        <td>
+          <%=dataStudent.firstName%>
+        </td>
+      </tr>
+      <tr>
+        <th>last Name</th>
+        <td>
+          <%=dataStudent.lastName%>
+        </td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>
+          <%=dataStudent.email%>
+        </td>
+      </tr>
+
+      <tr>
+
+
+
+
+        <td colspan=2>
+          <form action="/students/<%=dataStudent.id%>/add-subject" method="post">
+            <label for="subjectss">Choose subject</label>
+
+            <select name="SubjectId">
+
+            <% subject.forEach(function(datasbj){ %>
+
+   <option value="<%=datasbj.id%>"><%=datasbj.SubjectName%></option>
+  <% }) %>
+   </select>
+
+
+            <input type="submit" value="Submit">
+          </form>
+        </td>
+
+      </tr>
+
+    </table>
+
+
+
+
+
+  </body>
+
+</html>

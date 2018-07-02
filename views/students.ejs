@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <style>
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 16px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2
+      }
+    </style>
+    <meta charset="utf-8">
+    <title>list of all Students data</title>
+  </head>
+
+  <body>
+    <h2 align="center">STUDENT DATA</h2>
+    <p align="center"><a href="/students/add">Add Student data</a></p>
+    <table>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Action</th>
+        <th>Option</th>
+      </tr>
+
+      <% dataStudents.forEach((student)=>{   %>
+        <tr>
+          <td>
+            <%=student.firstName%>
+          </td>
+          <td>
+            <%=student.lastName%>
+          </td>
+          <td>
+            <%=student.email%>
+          </td>
+          <td><a href="/students/<%=student.id%>/add-subject">add subject</a></td>
+          <td><a href="/students/edit/<%=student.id%>">edit</a> | <a onclick="return confirm('delete this student?')" href="/students/delete/<%=student.id%>">delete</a></td>
+        </tr>
+        <%  })%>
+    </table>
+
+  </body>
+
+</html>

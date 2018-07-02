@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <style>
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 16px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2
+      }
+    </style>
+    <meta charset="utf-8">
+    <title>list of all Subjects data</title>
+  </head>
+
+  <body>
+    <h2 align="center">SUBJECT DATA</h2>
+    <table>
+      <tr>
+        <th>Subjects Name</th>
+        <th>Teacher</th>
+        <th>Action</th>
+
+      </tr>
+      <% subject.forEach(function(data){ %>
+        <tr>
+          <td>
+            <%=data.SubjectName%>
+          </td>
+          <td>
+            <ol>
+              <% data.Teachers.forEach(function(guru){ %>
+                <li>
+                  <%=guru.firstName%>
+                    <%=guru.lastName%>
+                </li>
+                <% })%>
+            </ol>
+          </td>
+
+          <td><a href="/subjects/<%=data.id%>/enrolled-students">Enrolled Student</a></td>
+
+
+
+        </tr>
+        <% }) %>
+
+    </table>
+
+  </body>
+
+</html>
