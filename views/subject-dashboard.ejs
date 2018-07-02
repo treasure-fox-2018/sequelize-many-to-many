@@ -35,7 +35,8 @@
           <th scope="col">No</th>
           <th scope="col">Subject Name</th>
           <th scope="col">Teacher(s)</th>
-          <th scope="col">Actions</th>
+          <th scope="col">Action</th>
+          <th scope="col">Options</th>
         </tr>
       </thead>
       <tbody>
@@ -56,7 +57,9 @@
                     </li>
                     <%  } %>
               </ol>
-
+            </td>
+            <td>
+              <a href="subject/<%=  data[i].id %>/enrolled-students">View Enrollled Students</a>
             </td>
             <td>
               <a href="subject/edit/<%=  data[i].id %>">Edit</a>

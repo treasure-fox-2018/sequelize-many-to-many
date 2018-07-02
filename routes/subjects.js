@@ -70,4 +70,25 @@ app.post("/subject/delete/:id", function(req, res) {
   res.redirect('/subject')
 })
 
+app.get("/subject/:id/add-subject", function(req, res) {
+  controller.findById(req.params.id)
+    .then(studentData => {
+      // console.log(studentData[5].Subjects[0].subject_name)
+      subject.showAllData()
+        .then((subjectData) => {
+          res.render('../views/student-add-subject-page', {
+            id: req.params.id,
+            Form: "Student Add Subject",
+            Message: "Please Choose a Subject",
+            data: studentData,
+            subjects: subjectData,
+          })
+        })
+    })
+    .catch(err => {
+      res.send(err);
+    })
+  res.end();
+})
+
 module.exports = app;
