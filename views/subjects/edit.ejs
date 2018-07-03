@@ -1,0 +1,21 @@
+<%- include('../header/header') -%>
+  <main role="main" class="container "style=" padding: 5rem 1.5rem;">
+
+    <div class="content text-center">
+      <h2>Edit Subjects Data</h2>
+      <a class="btn btn-sm btn-info " href="../../subjects/" role="button" >Show All Data</a>
+
+    </div>
+    <% if (error !== null) { %>
+      <div class="alert alert-danger"><%= error %></div>
+    <%} %>
+    <form action="/subjects/edit/<%= dataSubject.id%>" method="POST">
+        <div class="form-group">
+            <label for="subjectName">Subject Name</label>
+            <input type="text" class="form-control" id="subjectName" name="subjectName" value="<%= dataSubject.subjectName%>">
+        </div>
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+
+  </main><!-- /.container -->
+<%- include('../script/script')-%>

@@ -1,0 +1,33 @@
+<%- include('../header/header') -%>
+    <main role="main" class="container" style=" padding: 5rem 1.5rem; text-align: center;">
+
+        <div class="content">
+          <h2><%= dataSubject[0].subjectName%></h2>
+          <%if ( error !== null) {%>
+            <div class="alert alert-danger">error</div>
+          <%} %>
+          <a class="btn btn-sm btn-info " href="/subjects/" role="button" >return to subject list</a>
+  
+          <table class="table mt-5 table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% dataSubject[0].Students.forEach(student => { %>
+                <tr>
+                    <td><%= student.firstName %> <%= student.lastName %></td>
+                    <%if (student.StudentSubject.score !== null) {%>
+                      <td><%= student.StudentSubject.score %></td>
+                    <%} else {%>
+                      <td><a class="text-info" href="/subjects/<%= dataSubject[0].id%>/give-score/<%= student.id%>" >Give Score</a></td>
+                    <%}%>
+                  </tr>
+              <% })%>
+            </tbody>
+          </table>
+        </div>
+    </main><!-- /.container -->
+<%- include('../script/script')-%>

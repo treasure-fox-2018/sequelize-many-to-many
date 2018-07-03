@@ -1,0 +1,33 @@
+<%- include('../header/header') -%>
+  <main role="main" class="container" style=" padding: 5rem 1.5rem;">
+
+    <div class="content" style="text-align: center;">
+      <h2>Add Teachers Data</h2>
+      <a class="btn btn-sm btn-info " href="../teachers/" role="button" >Show All Data</a>
+    </div>
+    <br>
+    <% if (error !== null) { %>
+      <div class="alert alert-danger"><%= error %></div>
+    <%} %>
+    <form action="/teachers/add" method="POST">
+        <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" class="form-control" id="first_name" name="firstName" placeholder="Enter first name" value = "<%= dataTeacher.firstName%>">
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" class="form-control" id="last_name" name="lastName" placeholder="Enter last name" value = "<%= dataTeacher.lastName%>">
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" value = "<%= dataTeacher.email%>">
+        </div>
+        <div class="form-group">
+            <label for="SubjectId">Subject Id</label>
+            <input type="text" class="form-control" id="SubjectId" name="SubjectId" placeholder="Enter Subject Id" value = "<%= dataTeacher.SubjectId%>"> 
+          </div>
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+  </main><!-- /.container -->
+<%- include('../script/script')-%>
+

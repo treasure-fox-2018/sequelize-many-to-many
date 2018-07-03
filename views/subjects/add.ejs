@@ -1,0 +1,22 @@
+<%- include('../header/header') -%>
+    <main role="main" class="container" style=" padding: 5rem 1.5rem;">
+
+      <div class="content text-center">
+        <h2>Add Subjects Data</h2>
+        <a class="btn btn-sm btn-info " href="../subjects/" role="button" >Show All Data</a>
+
+      </div>
+      <br>
+      <% if (error !== null) { %>
+        <div class="alert alert-danger"><%= error %></div>
+      <%} %>
+      <form action="/subjects/add" method="POST">
+          <div class="form-group">
+              <label for="subjectName">Subject Name</label>
+              <input type="text" class="form-control" id="subjectName" name="subjectName" placeholder="Enter subject name">
+          </div>
+          <button type="submit" class="btn btn-info">Submit</button>
+      </form>
+
+    </main><!-- /.container -->
+<%- include('../script/script')-%>

@@ -1,0 +1,45 @@
+<%- include('../header/header') -%>
+    <main role="main" class="container" style=" padding: 5rem 1.5rem; text-align: center;">
+
+        <div class="content">
+          <h2>Subjects Data</h2>
+          <%if ( error !== null) {%>
+            <div class="alert alert-danger">error</div>
+          <%} %>
+          <a class="btn btn-sm btn-info " href="/subjects/add" role="button" >Add Subject</a>
+  
+          <table class="table mt-5 table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Subject Name</th>
+                <th scope="col">Teacher</th>
+                <th scope="col">Actions</th>
+                <th scope="col">Option</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% dataSubjects.forEach(subject => { %>
+                <tr>
+                    <th scope="row"><%= subject.id %></th>
+                    <td><%= subject.subjectName %></td>
+                    <td>
+                      <ol class="text-left">
+                        <% subject.Teachers.forEach(teacher => { %>
+                          <li ><%= teacher.firstName %> <%= teacher.lastName %></li>
+                        <%}) %>
+                      </ol>
+                    </td>
+                    <td><a class="text-info" href="/subjects/<%= subject.id%>/enrolled-students" >Enrolled Students</a></td>
+                    <td>
+                      <a class="text-info" href="/subjects/edit/<%= subject.id%>" >edit</a>
+                      <span>|</span>
+                      <a class="text-info" href ="/subjects/delete/<%= subject.id%>" onclick="return confirm('Are you sure to delete this item?')">delete</a>
+                    </td>
+                  </tr>
+              <% })%>
+            </tbody>
+          </table>
+        </div>
+    </main><!-- /.container -->
+<%- include('../script/script')-%>

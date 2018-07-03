@@ -1,0 +1,21 @@
+<%- include('../header/header') -%>
+    <main role="main" class="container" style=" padding: 5rem 1.5rem;">
+
+      <div class="content text-center">
+        <h2>Add Score</h2>
+      </div>
+      <br>
+      <% if (error !== null) { %>
+        <div class="alert alert-danger"><%= error %></div>
+      <%} %>
+      <p>Student Name : <%= dataStudent[0].firstName %> <%= dataStudent[0].lastName %></p>
+      <form action="/subjects/<%= subjectId%>/give-score/<%= dataStudent[0].id%>" method="POST">
+          <div class="form-group">
+              <label for="studentScore">Student Score</label>
+              <input type="text" class="form-control" id="studentScore" name="studentScore" placeholder="Enter Student Score">
+          </div>
+          <button type="submit" class="btn btn-info">Submit</button>
+      </form>
+
+    </main><!-- /.container -->
+<%- include('../script/script')-%>
