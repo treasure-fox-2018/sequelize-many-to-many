@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+            </style>
+</head>
+<body>
+    <h1><%=dataSubject.subjectName %></h1>
+
+    <table>
+            <tr>
+              <th>name</th>
+              <th>score</th>
+              <th>action</th>
+            </tr>
+            <% dataSubject.Students.forEach(function(student){ %>
+                <tr>
+                  <td><%= student.firstName %></td>
+                  <td>80</td>
+                  <td><a href="/subject/<%= student.id %>/give-score">give score</a></td>
+                </tr>
+            <% }) %>
+    </table>
+</body>
+</html>
