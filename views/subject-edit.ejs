@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2><%= title %></h2>
+    <form action="/subject/edit/<%= subject.id %>" method="post">
+      Subject name:<br>
+      <input type="text" name="subjectname" value="<%= subject.name %>">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+    <%- include('./partials/links.ejs')%>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2><%= title %></h2>
+    <form action="/teacher/edit/<%= teacher.id %>" method="post">
+      First name:<br>
+      <input type="text" name="firstname" value="<%= teacher.first_name %>">
+      <br>
+      Last name:<br>
+      <input type="text" name="lastname" value="<%= teacher.last_name %>">
+      <br>
+      Email:<br>
+      <input type="text" name="email" value="<%= teacher.email %>">
+      <br>
+      Subject:<br>
+      <input type="text" name="subject" value="<%= teacher.SubjectId %>">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+    <%- include('./partials/links.ejs')%>
+  </body>
+</html>

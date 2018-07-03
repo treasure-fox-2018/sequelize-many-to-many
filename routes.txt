@@ -1,0 +1,4 @@
+/teacher
+/teacher/add
+/subject
+/subject/add

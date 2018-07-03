@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+      <table>
+        <tr>
+          <th>id</th>
+          <th>Subject</th>
+          <th>Teacher</th>
+          <th>Action</th>
+          <th colspan="2">Options</th>
+        </tr>
+        <% subjects.forEach(subject =>{%>
+        <tr>
+          <td><%= subject.id %></td>
+          <td><%= subject.name %></td>
+          <td>
+            <ol>
+              <% subject.Teachers.forEach(teacher =>{%>
+              <li><%= teacher.first_name %> <%= teacher.last_name %></li>
+              <%})%>
+            </ol>
+          </td>
+          <td><a href="/subject/<%= subject.id%>/enrolled-students">Enrolled Students</a></td>
+          <td><a href="/subject/edit/<%= subject.id%>">Edit</a></td>
+          <td><a href="/subject/delete/<%= subject.id%>">Delete</a></td>
+        </tr>
+        <%})%>
+      </table>
+      <br>
+      <button type="button" name="button" onclick="window.location.href='/add'">Add Subject</button>
+      <%- include('./partials/links.ejs')%>
+  </body>
+</html>

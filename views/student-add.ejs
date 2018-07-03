@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2><%= title %></h2>
+    <% if(errMessage !== null) {%>
+      <h2 style="background-color:Tomato;"><%= errMessage %></h2>
+      <form action="/student/add" method="post">
+        First name:<br>
+        <input style="background-color:Yellow;" type="text" name="firstname" value="<%= student.firstname %>">
+        <br>
+        Last name:<br>
+        <input style="background-color:Yellow;" type="text" name="lastname" value="<%= student.lastname %>">
+        <br>
+        Email:<br>
+        <input style="background-color:Yellow;" type="text" name="email" value="<%= student.email %>">
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+    <%}else{%>
+      <form action="/student/add" method="post">
+        First name:<br>
+        <input type="text" name="firstname">
+        <br>
+        Last name:<br>
+        <input type="text" name="lastname">
+        <br>
+        Email:<br>
+        <input type="text" name="email">
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+    <%}%>
+    <%- include('./partials/links.ejs')%>
+  </body>
+</html>

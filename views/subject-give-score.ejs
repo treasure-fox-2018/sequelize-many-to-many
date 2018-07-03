@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h2><%= title %></h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th colspan='2'>Score</th>
+      </tr>
+      <%studentSubjects.forEach(studentSubject=>{%>
+      <tr>
+          <td><%= studentSubject.Student.first_name %><%= studentSubject.Student.last_name%></td>
+          <% if(studentSubject.score !== null){%>
+            <td><%= studentSubject.score%></td>
+          <%}else{%>
+            <form class="" action="/subject/<%= subjectId%>/give-score/<%= studentSubject.Student.id%>" method="post">
+              <td><input type="text" name="score"></td>
+              <td><input type="submit" value="Add Score"></td>
+            </form>
+          <%}%>
+      </tr>
+      <%})%>
+    </table>
+  </body>
+</html>
