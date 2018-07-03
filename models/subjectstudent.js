@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var SubjectStudent = sequelize.define('SubjectStudent', {
     StudentId: DataTypes.INTEGER,
-    SubjectId: DataTypes.STRING
+    SubjectId: DataTypes.INTEGER
   }, {});
   SubjectStudent.associate = function(models) {
       SubjectStudent.belongsTo(models.Student)

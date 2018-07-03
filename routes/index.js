@@ -7,6 +7,7 @@ const path = require('path')
 const model = require('../models/')
 const Student = model.Student
 const Subject = model.Subject
+const SubjectStudent = model.SubjectStudent
 
 routes.get('/', (req, res) => {
     res.render('homepage')
@@ -68,7 +69,45 @@ routes.post('/student/add', (req, res) => {
     .catch(err => console.log(err))
 })
 
+routes.get('/student/:id/add-subject', (req, res) => {
+    Student.findById(req.params.id)
+    .then(student => {
+        Subject.findAll()
+        .then(subjects => {
+            res.render('assignSubject', {student:student, subjects: subjects})
+        })
+    })
+})
 
+routes.post('/student/:id/add-subject', (req, res) => {
+    console.log(req.body.subjectChoose)
+
+    Subject.findOne({where: {subjectName: req.body.subjectChoose}})
+    .then(subject => {
+        SubjectStudent.findAll({
+            where: {
+                StudentId: req.params.id,
+                SubjectId: subject.id
+            }
+        })
+        .then(findDuplicate => {
+            if (findDuplicate.length > 0) {
+                console.log('warning duplicate');
+            } else {
+                SubjectStudent.create({
+                    StudentId: req.params.id,
+                    SubjectId: subject.id})
+                .then(() =>
+                  res.redirect('/student'))
+            }
+        })
+        .catch(err => {
+            console.log('------ ini error dari catch find all where cause');
+            console.log(err)}
+        )
+    })
+
+})
 
 
 
