@@ -57,7 +57,7 @@ routes.post("/:id/add-subject/", (req, res) => {
         include: [models.Subject]
       })
       .then(dataStudent => {
-        res.render("data_student", { dataStudent: dataStudent, subjectName: subjectName.subject_name });
+        res.render("data_student", { dataStudent: dataStudent });
       })
       //res.render('data_student', {dataStudent: subjectName});
     })

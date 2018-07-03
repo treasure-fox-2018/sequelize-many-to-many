@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+  <div class="w3-container">
+    <h2><%= title_subject %></h2>
+    <table class="w3-table">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Actions</th>
+        <th>Option</th>
+        <th>Score</th>
+      </tr>
+      <% studentBySubject.forEach(studentBySubject => { %>
+        <tr>
+          <td><%= studentBySubject.id %></td>
+          <td><%= studentBySubject.first_name + "  " + studentBySubject.last_name %></td>
+          <td>
+            <a href="/subject/<%= studentBySubject.id %>/give-score">Give Score</a>
+          </td>
+          <td>
+            <a href="#">Edit</a> ||
+            <a href="#">Delete</a>
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+
+    <a href="/" class="w3-button w3-black">Back</a>
+  </div>
+
+</body>
+
+</html>

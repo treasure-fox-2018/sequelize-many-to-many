@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+  <div class="w3-container">
+    <h2> Form Give Score </h2>
+
+    <table class="w3-table">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Score</th>
+      </tr>
+      <tr>
+        <td>
+          <%= student.id %>
+        </td>
+        <td>
+          <%= student.first_name + "  " + student.last_name %>
+        </td>
+        <td>
+          <form action="/subject/<%= student.id %>/give-score" method="POST">
+            <input type="text" name="score">
+            <input type="submit" value="Save">
+          </form>
+        </td>
+      </tr>
+    </table>
+    <a href="/" class="w3-button w3-black">Back</a>
+  </div>
+
+</body>
+
+</html>
