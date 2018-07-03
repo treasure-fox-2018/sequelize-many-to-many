@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+    <table action="/student/addsubject/<%=dataStudent.id%>">
+      <thead>
+          <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><%=dataStudent.FirstName%></td>
+            <td><%=dataStudent.LastName%></td>
+            <td><%=dataStudent.Email%></td>
+          </tr>
+      </tbody>
+    </table><br>
+    <form action="/student/addsubject/<%=dataStudent.id%>" method="POST" >
+        <select name="name" size='1'>
+            <option value="Fisika">Fisika</option>
+            <option value="Ekonomi">Ekonomi</option>
+        </select><br><br>
+        <input type="submit" class="submit" value="Add Subject">
+    </form>
+</body>
+</html>

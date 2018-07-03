@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>All Student Data</h1>
+    <h3><a href="/student/add">Add Student Data</a></h3>
+
+    <table>
+      <thead>
+          <tr>
+            <td>Id</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>Action</td>
+            <td>Options</td>
+          </tr>
+      </thead>
+      <tbody>
+          <% dataStudent.forEach((data) => { %>
+            <td><%=data.id%></td>
+            <td><%=data.FirstName%></td>
+            <td><%=data.LastName%></td>
+            <td><%=data.Email%></td>
+            <td><a href="/student/addsubject/<%=data.id%>">Add Subject</a></td>
+            <td><a href="/student/edit/<%=data.id%>">Edit</a><a href="/student/delete/<%=data.id%>"> | Delete</a></td>
+          <tr></tr>
+          <%})%>
+      </tbody>
+    </table>
+
+    <a href="/">Back</a>
+  </body>
+</html>
