@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Students Data</h2>
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>email</th>
+            <th>subject</th>
+            <th>Actions</th>
+            <th>options</th>
+        </tr>
+
+        <% for(let i=0;i<Students.length;i++){%>
+            <tr>
+
+                <td>
+                    <%= Students[i].id %>
+                </td>
+                <td>
+                    <%= Students[i].firstName %>
+                </td>
+                <td>
+                    <%= Students[i].lastName %>
+                </td>
+                <td>
+                    <%= Students[i].email %>
+                </td>
+                <td>
+                    <%= Students[i].Subject ? Students[i].Subject.subjectName : 'unassigned' %>
+                </td>
+                <td>
+                    <a href="/students/<%= Students[i].id%>/add-subject ">Add Subject</a>
+                </td>
+                <td>
+                    <a href="/students/edit/<%= Students[i].id %>">Edit</a> |
+                    <a href="/students/delete/<%= Students[i].id %>" onclick="return confirm('are you sure?');">Delete</a>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+    <p style="text-align: center">
+        <a href="/students/add">Add Student</a>
+        <a href="/subjects">subjects</a>
+
+    </p>
+</body>
+
+</html>

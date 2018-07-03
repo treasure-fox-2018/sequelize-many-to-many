@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>HTML Table</h2>
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>first_name</th>
+            <th>last_name</th>
+            <th>email</th>
+            <th>Subject</th>
+            <th>options</th>
+        </tr>
+
+        <% for(let i=0;i<Teachers.length;i++){%>
+            <tr>
+
+                <td>
+                    <%= Teachers[i].id %>
+                </td>
+                <td>
+                    <%= Teachers[i].firstName %>
+                </td>
+                <td>
+                    <%= Teachers[i].lastName %>
+                </td>
+
+
+                <td>
+                    <%= Teachers[i].email %>
+                </td>
+                <td>
+                    <%= Teachers[i].Subject ? Teachers[i].Subject.subjectName : 'unassigned' %>
+                </td>
+                <td>
+                    <a href="/teacher/edit/<%= Teachers[i].id %>">Edit</a> |
+                    <a href="/teacher/delete/<%= Teachers[i].id %>" onclick="return confirm('are you sure?');">Delete</a>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+    <p style="text-align: center">
+        <a href="/teacher/add">Add Teacher</a>
+        <a href="/subjects">subjects</a>
+
+    </p>
+</body>
+
+</html>
