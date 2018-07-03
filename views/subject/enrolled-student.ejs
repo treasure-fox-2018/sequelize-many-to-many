@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1><%= Subjects[0].subject_name %></h1>
+
+    <h3><a href="/subject">return to subject list</a></h3>
+
+    <table>
+      <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Score</td>
+      </tr>
+
+      <% Subjects[0].Students.forEach ( student => { %>
+      <tr>
+        <td><%= student.id %></td>
+        <td><%= student.first_name %> <%= student.last_name %></td>
+        
+        <% if (student.StudentSubject.Score === null) { %>
+          <td><a href="/subject/<%= Subjects[0].id %>/enrolled-students/give-score/<%= student.id %>">Give Score</a></td>
+        <% } else { %>
+          <td><%= student.StudentSubject.Score %></td>
+        <% } %>
+      </tr>
+      <% }) %>
+    </table>
+
+  </body>
+
+</html>

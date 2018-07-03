@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Students Data</h1>
+  <h3>add student</h3>
+
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Subjects</th>
+      <th>Actions</th>
+      <th>Options</th>
+    </tr>
+
+    <% dataStudents.forEach( student => { %>
+      <tr>
+        <td><%= student.id %></td>
+        <td><%= student.first_name %></td>
+        <td><%= student.last_name %></td>
+        <td><%= student.email %></td>
+        <td>
+          <ol>
+            <% if (student.Subjects.length === 0) { %>
+              unassigned
+            <% } else { %>
+              <% student.Subjects.forEach( subject => { %>
+              <li><%= subject.subject_name %></li>
+              <br>
+              <% }) %>
+            <% } %>
+          </ol>
+        </td>
+        <td><a href="/student/<%= student.id %>/add-subject">Add Subject</a></td>
+        <td>Edit | Delete</td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+
+</html>

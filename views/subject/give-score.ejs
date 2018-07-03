@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Add Score</h1>
+
+  <form action="/subject/<%= SubjectId %>/enrolled-students/give-score/<%= StudentId%>" method="POST">
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Score</th>
+      </tr>
+
+      <tr>
+        <td><%= subject.id %></td>
+        <td><%= subject.first_name %><% subject.last_name%></td>
+        <td>
+            <input type="text" name="score" placeholder="score">
+        </td>
+      </tr>
+    </table>
+    <br><br>
+    <input type="submit" value="Submit Score">
+  </form>
+
+  <br>
+  <br>
+</body>
+
+</html>

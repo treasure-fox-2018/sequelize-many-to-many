@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1>All Subjects Data</h1>
+
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Subject Name</th>
+        <th>Full Name</th>
+        <th>Actions</th>
+      </tr>
+      <% Subjects.forEach( subject => { %>
+        <tr>
+          <td><%= subject.id%></td>
+          <td><%= subject.subject_name%></td>
+          <td>
+            <ol>
+            <% subject.Teachers.forEach( teacher => { %>
+              <li>
+                <%= teacher.first_name%> <%= teacher.last_name %>
+              </li>
+            <% }) %>  
+            </ol>
+          </td>
+          <td><a href="/subject/<%= subject.id %>/enrolled-students">Enrolled Students</a></td>
+        </tr>
+      <% }) %>
+    </table>
+
+  </body>
+
+</html>
