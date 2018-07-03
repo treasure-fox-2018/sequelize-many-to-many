@@ -1,65 +1,67 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Subject</title>
-</head>
-<body>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 50%;
-        }
-        
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-        
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Subject</title>
+    </head>
+    <body>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 50%;
+            }
+
+            td,
+            th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
         </style>
-        </head>
-        <body>
-        
-        <h2>Table Subject</h2>
-        
-        <table>
-          <tr>
-            <th>Subject</th>
-            <th>Teacher</th>
-            <th>Option</th>
-          </tr>
-          <%for(let i=0;i<allData.length;i++){%>
-          <tr>
-             
-            <td><%=allData[i].name%></td>
-            <td>
-              <ol>
-                  <%for(let j=0;j<allData[i].Teachers.length;j++){%>
-                   <li>
-                     <%=allData[i].Teachers[j].first_name%>
-                     <%=allData[i].Teachers[j].last_name%>
-                  </li>   
-                  <%}%>
-              </ol>
+    </head>
+    <body>
+            <h2>Table Subject</h2>
+     
           
-          </td>
-            <td>
-                <a href ="/subject/<%=allData[i].id%>/edit">edit</a>
-                <a href = "/subject/<%=allData[i].id%>/delete">delete</a>
-            </td>
-           
-          </tr>
-          <%}%>
-        </table>
+
+            <table>
+                <tr>
+                    <th>Subject</th>
+                    <th>Teacher</th>
+                    <th>Option</th>
+                </tr>
+                <%for(let i=0;i<allData.length;i++){%>
+                    <tr>
+
+                        <td><%=allData[i].name%></td>
+                        <td>
+                            <ol>
+                                <%for(let j=0;j<allData[i].Teachers.length;j++){%>
+                                    <li>
+                                        <%=allData[i].Teachers[j].first_name%>
+                                        <%=allData[i].Teachers[j].last_name%>
+                                    </li>
+                                <%}%>
+                            </ol>
+
+                        </td>
+                        <td>
+                            <a href="/subject/<%=allData[i].id%>/enrolled-students">enrolled students</a>
+
+                        </td>
+
+                    </tr>
+                <%}%>
+            </table>
+        </form>
         <br><br>
-        <a href = "/subject/add">Add Subject</a>
-</body>
+        <a href="/subject/add">Add Subject</a>
+    </body>
 </html>

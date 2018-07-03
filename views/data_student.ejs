@@ -12,12 +12,16 @@
           <th>Firstname</th>
           <th>Lastname</th> 
           <th>Email</th>
+          <th>Subject</th>
         </tr>
         <%for(let i =0;i<dataStudent.length;i++){%>
                 <tr>
                         <td><%=dataStudent[i].first_name%></td>
                         <td><%=dataStudent[i].last_name%></td> 
                         <td><%=dataStudent[i].email%></td>
+                        <td>
+                            <a href ="/student/<%=dataStudent[i].id%>/addSubject">add subject</a>
+                        </td>
                       </tr>
             <%}%>
         

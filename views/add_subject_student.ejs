@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action = "/student/<%=data_student.id%>/addSubject" method = "POST">
+    Name :
+    <%=data_student.first_name%><br>
+    Last Name :
+    <%=data_student.last_name%><br>
+    Email : 
+    <%=data_student.email%><br>
+    Subject :
+    <%for(let i =0;i<data_student.Subjects.length;i++){%>
+
+        <%=data_student.Subjects[i].name%><br>
+    <%}%>
+        <br><br>
+        <select name ="id">
+            <%for(let i=0;i<subject.length;i++){%>
+            <option value ="<%=subject[i].id%>"><%=subject[i].name%></option>
+        <%}%>
+    </select>
+    <br>
+    <input type = "submit" name="add">
+</form>
+</body>
+</html>

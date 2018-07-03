@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/subject/<%=dataStudent[0].StudentId%>/give-score/<%=dataStudent[0].SubjectId%>" method="POST">
+    Name : <br>
+    <%=dataStudent[0].Student.first_name%>
+    <%=dataStudent[0].Student.last_name%>
+    <br><br>
+    Score : <br>
+    <input type="text" name="score"  value="">
+    <br><br>
+    <input type="submit" value="submit">
+
+    
+    </form>
+</body>
+</html>
