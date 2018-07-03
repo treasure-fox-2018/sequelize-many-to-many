@@ -34,6 +34,44 @@ router.post('/add', (req, res) => {
   })
 })
 
+router.get('/:id/add-subject', (req, res) => {
+  models.Student.find({
+    where: {id: req.params.id},
+    include: [models.Subject],
+    order: [
+    ['id', 'ASC']
+    ] 
+  })
+  .then( student => {
+    models.Subject.findAll({
+      order: [
+      ['id', 'ASC']
+      ] 
+    })
+  .then( subjects => {
+    res.render('student-add-subject', {student: student, subjects: subjects})
+    })
+  })
+  .catch( err => {
+    res.send(err.message)
+  })
+})
+
+router.post('/:id/add-subject', (req, res) => {
+  let studentSubjectObj = {
+    StudentId: req.params.id,
+    SubjectId: req.body.subjectId
+  }
+  models.Studentsubject.create(studentSubjectObj)
+  .then(() => {
+    res.redirect('/')
+  })
+  .catch(err => {
+    res.send(err.message)
+  })
+})
+
+
 router.get('/edit/:id', (req, res) => {
   models.Student.findById(req.params.id)
   .then((student) => {

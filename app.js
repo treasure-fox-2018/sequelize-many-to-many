@@ -1,8 +1,8 @@
 const app = require('express')();
 const homeRoute = require('./routes/index');
-const studentRoute = require('./routes/student.js');
-const subjectRoute = require('./routes/subject.js');
-const teacherRoute = require('./routes/teacher.js');
+const studentRoute = require('./routes/student');
+const subjectRoute = require('./routes/subject');
+const teacherRoute = require('./routes/teacher');
 const bodyParser = require('body-parser');
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: false}))
