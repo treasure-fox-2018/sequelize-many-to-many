@@ -10,8 +10,8 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.use(routesIndex)
-app.use(routesStudent)
-app.use(routesSubject)
+app.use('/student', routesStudent)
+app.use('/subject', routesSubject)
 
 app.listen(port, () => {
   console.log(`Listening app on port http://localhost:${port}`);

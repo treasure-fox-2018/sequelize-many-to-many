@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     Student.belongsToMany(models.Subject, {
       through: models.StudentSubject
     })
+    Student.hasMany(models.StudentSubject)
+
   };
   return Student;
 };

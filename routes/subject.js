@@ -2,7 +2,7 @@ const routes = require('express').Router()
 const models = require('../models')
 const Subjects = models.Subject
 
-routes.get('/subject', (req, res) => {
+routes.get('/', (req, res) => {
   Subjects.findAll({
     include: [models.Student]
   })  
@@ -10,5 +10,10 @@ routes.get('/subject', (req, res) => {
       res.send(dataSubject)
     })
 })
+
+routes.get('/')
+
+
+
 
 module.exports = routes

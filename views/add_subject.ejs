@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+  <div class="w3-container">
+    <h2>Add Subject to Student</h2>
+
+    <table class="w3-table">
+      <tr>
+        <td>First Name</td>
+        <td>
+          <%= studentAddSubject.first_name %>
+        </td>
+      </tr>
+      <tr>
+        <td>Last Name</td>
+        <td>
+          <%= studentAddSubject.last_name %>
+        </td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>
+          <%= studentAddSubject.email %>
+        </td>
+      </tr>
+    </table>
+
+    <form action="/student/<%= studentAddSubject.id %>/add-subject" method="POST">
+      <select name="subject_id" id="submit" required>
+        <option value="">Choose Subject</option>
+        <% subjects.forEach(subjects => { %>
+          <option value="<%= subjects.id %>"><%= subjects.subject_name %></option>
+        <% }) %>
+      </select>
+      <button type="submit" id="submit">Save</button>
+    </form>
+
+    <%= error %>
+
+  </div>
+
+</body>
+
+</html>
