@@ -38,10 +38,15 @@ app.post("/teacher/add", function(req, res) {
     res.redirect('/teacher')
   })
   .catch((err) => {
-    res.render('../views/teacher-page', {
-      Form: "Teacher Registration",
-      Message: "Enter Information Below",
-      error_message: err.message
+    subject.showAllData()
+    .then((subjectData) => {
+      // console.log(subjectData);
+      res.render('../views/teacher-page', {
+        Form: "Teacher Registration",
+        Message: "Enter Information Below",
+        error_message: err.message,
+        subjects: subjectData,
+      })
     })
   })
 })
@@ -49,24 +54,24 @@ app.post("/teacher/add", function(req, res) {
 app.get("/teacher/edit/:id", function(req, res) {
   subject.showAllData()
   .then((subjectData) => {
-    res.render('../views/teacher-edit-page', {
-      id: req.params.id,
-      Form: "Teacher Edit",
-      Message: "Leave unchanged information form blank",
-      subjects: subjectData,
+    controller.findById(req.params.id)
+    .then((teacherData) => {
+      res.render('../views/teacher-edit-page', {
+        id: req.params.id,
+        Form: "Teacher Edit",
+        Message: "Leave unchanged information form blank",
+        subjects: subjectData,
+        first_name: teacherData.first_name,
+        last_name: teacherData.last_name,
+        email: teacherData.email,
+        error_message: "Welcome",
+      })
     })
   })
 })
 
 app.post("/teacher/edit/:id", function(req, res) {
-  let input = req.body;
-  controller.editTeacher(req.params.id, input.first_name, input.last_name, input.email, input.SubjectId)
-  .then(() => {
-    res.redirect('/teacher');
-  })
-  .catch((err) => {
-    res.send(err)
-  })
+  controller.editTeacher(req, res)
 })
 
 app.get("/teacher/delete/:id", function(req, res) {

@@ -1,8 +1,19 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
+  const Op = sequelize.Op;
   var Student = sequelize.define('Student', {
-    first_name: DataTypes.STRING,
-    last_name: DataTypes.STRING,
+    first_name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    last_name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true,
+      },
+    },
     email: {
       type: DataTypes.STRING,
       validate: {
@@ -12,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
           // console.log("test");
           Student.findOne({
               where: {
-                email: value
+                email: value,
+                id: {[Op.ne]: this.id}
               }
             }).then(function(u) {
               if (u !== null) {

@@ -11,13 +11,26 @@ class studentSubjectsController {
     });
   }
 
-  // static deleteStudent(studentID) {
-  //   return models.Student.destroy({
-  //     where: {
-  //       id: studentID,
-  //     }
-  //   });
-  // }
+  static addScore(scoreValue, studentId, subjectId) {
+    return models.StudentSubject.update({
+      score: scoreValue
+    }, {
+      where: {
+        [Op.and]: [{
+            StudentId: studentId,
+          },
+          {
+            SubjectId: subjectId,
+          },
+        ]
+      }
+    })
+  };
+
+
+  static showAllData() {
+    return models.StudentSubject.findAll();
+  }
   //
   // static editStudent(id, StudentId, SubjectId, email) {
   //   return (

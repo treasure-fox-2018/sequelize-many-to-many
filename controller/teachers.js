@@ -1,6 +1,7 @@
 const models = require('../models');
 const Sequelize = require('Sequelize');
-const Op = Sequelize.Op;
+const subject = require('./subjects');
+
 
 class teachersController {
   static showAllData() {
@@ -30,45 +31,71 @@ class teachersController {
     });
   }
 
-  static editTeacher(id, first_name, last_name, email, SubjectId) {
-    return (
-      models.Teacher.findById(Number(id), {
+  static findById(teacherId) {
+    return models.Teacher.findById(Number(teacherId))
+  }
+
+  static editTeacher(req, res) {
+    const input = req.body;
+    const id = req.params.id;
+    models.Teacher.findById(Number(id), {
         raw: true
-      }).then((data) => {
+      })
+      .then((data) => {
         // console.log([first_name, last_name, email]);
-        if (first_name === '') {
+        if (input.first_name === '') {
           var processed_first_name = data.first_name;
         } else {
-          var processed_first_name = first_name
+          var processed_first_name = input.first_name
         }
-        if (last_name === '') {
+        if (input.last_name === '') {
           var processed_last_name = data.last_name;
         } else {
-          var processed_last_name = last_name
+          var processed_last_name = input.last_name
         }
-        if (email === '') {
+        if (input.email === '') {
           var processed_email = data.email;
         } else {
-          var processed_email = email
+          var processed_email = input.email
         }
-        if (SubjectId === '') {
+        if (input.SubjectId === '') {
           var processed_SubjectId = data.SubjectId;
         } else {
-          var processed_SubjectId = SubjectId
+          var processed_SubjectId = input.SubjectId
         }
-        // console.log(data);
-        // console.log([processed_first_name, processed_last_name, processed_SubjectId]);
         models.Teacher.update({
-          first_name: processed_first_name,
-          last_name: processed_last_name,
-          SubjectId: processed_SubjectId,
-        }, {
-          where: {
-            id: `${id}`
-          }
-        })
+            id: id,
+            first_name: processed_first_name,
+            last_name: processed_last_name,
+            email: processed_email,
+            SubjectId: processed_SubjectId,
+          }, {
+            where: {
+              id: `${id}`
+            }
+          })
+          .then(function() {
+            res.redirect('/teacher');
+          })
+          .catch((err) => {
+            subject.showAllData()
+              .then((subjectData) => {
+                teachersController.findById(req.params.id)
+                  .then((teacherData) => {
+                    res.render('../views/teacher-edit-page', {
+                      id: req.params.id,
+                      Form: "Teacher Edit",
+                      Message: "Leave unchanged information form blank",
+                      subjects: subjectData,
+                      first_name: teacherData.first_name,
+                      last_name: teacherData.last_name,
+                      email: teacherData.email,
+                      error_message: err.message,
+                    })
+                  })
+              })
+          })
       })
-    )
   }
 }
 

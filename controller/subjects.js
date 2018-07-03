@@ -12,6 +12,24 @@ class subjectsController {
     });
   }
 
+  static findById(subjectId) {
+    return models.Subject.findById(Number(subjectId));
+  }
+
+  static showStudent(subjectId) {
+    return models.Subject.findById(subjectId, {
+      order: [
+        ["id", "ASC"],
+      ],
+      include: [{
+        model: models.Student,
+        through: {
+          attributes: ["id", "first_name", "last_name", "score"]
+        }
+      }]
+    });
+  }
+
   static addSubject(subject_name) {
     return models.Subject.create({
       subject_name: subject_name,

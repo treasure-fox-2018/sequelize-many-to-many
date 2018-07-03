@@ -11,7 +11,7 @@ function subject_helper(subjects_data) {
       teacherNameContainer.push(fullName)
     }
   }
-  console.log(teacherNameContainer);
+  // console.log(teacherNameContainer);
   return teacherNameContainer;
 }
 

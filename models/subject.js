@@ -1,7 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Subject = sequelize.define('Subject', {
-    subject_name: DataTypes.STRING,
+    subject_name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true,
+      },
+    },
     createdAt: new Date(),
     updatedAt: new Date(),
   }, {});

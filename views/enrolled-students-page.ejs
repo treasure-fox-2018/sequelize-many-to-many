@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Enrolled Students Page</title>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+</head>
+
+<body>
+  <%- include("./partials/header.ejs") %>
+    <h1><%= error_message %></h1>
+    <h1>Enrolled Students</h1>
+    <h2><%= subject_name %></h2>
+    <table class="table">
+      <thead style="background: #DE9139">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% var studentsOfSubjectData = studentsOnSubjectHelper(studentsOfSubject) %>
+        <% if (studentsOfSubjectData === null) { %>
+        <%  } else { %>
+        <% for (var i = 0; i < studentsOfSubjectData.length; i ++) { %>
+          <tr>
+            <td>
+                <%= studentsOfSubjectData[i] %>
+            </td>
+            <td>
+                <% var score = scoreHelper(studentSubjects, studentsOfSubject.Students[i].id, id) %>
+                <% if (score !== null) { %>
+                <h5><%= score %></h5>
+                <% } else { %>
+              <form action="/subject/<%= id %>/enrolled-students" method="post">
+                <input type="text" name="scoreValue" placeholder="Enter Score">
+                <button type="submit" name="studentId" value ="<%= studentsOfSubject.Students[i].id %>" >Give Score</button>
+              </form>
+              <% } %>
+            </td>
+          </tr>
+        <% } %>
+      <% } %>
+      </tbody>
+
+
+</body>
+
+</html>

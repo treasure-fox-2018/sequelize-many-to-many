@@ -7,7 +7,7 @@ const studentSubject = require('../controller/studentSubjects');
 app.get('/student', (req, res) => {
   controller.showAllData()
     .then(studentData => {
-      // console.log(studentData[5].Subjects[0].subject_name)
+      console.log(studentData)
       res.render('../views/student-dashboard', {
         data: studentData,
       })
@@ -43,24 +43,22 @@ app.post("/student/add", function(req, res) {
 })
 
 app.get("/student/edit/:id", function(req, res) {
-  res.render('../views/student-edit-page', {
-    id: req.params.id,
-    Form: "Student Edit",
-    Message: "Leave unchanged information form blank"
+  controller.findById(req.params.id)
+  .then((studentData) => {
+    res.render('../views/student-edit-page', {
+      id: req.params.id,
+      Form: "Student Edit",
+      Message: "Change the desired information(s)",
+      first_name: studentData.first_name,
+      last_name: studentData.last_name,
+      email: studentData.email,
+      error_message: "Welcome"
+    })
   })
 })
 
 app.post("/student/edit/:id", function(req, res) {
-  let input = req.body;
-  // console.log(req.params.id);
-  // console.log(input);
-  controller.editStudent(req.params.id, input.first_name, input.last_name, input.email)
-    .then(() => {
-      res.redirect('/student');
-    })
-    .catch((err) => {
-      res.send(err.msg)
-    })
+  controller.editStudent(req, res)
 })
 
 app.get("/student/delete/:id", function(req, res) {
