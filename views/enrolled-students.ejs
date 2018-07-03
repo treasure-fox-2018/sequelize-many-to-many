@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Subject List</title>
+</head>
+<body>
+    <h1><%= dataStudentSubject.subject_name %></h1>
+    <a href="/subjects">Return to Subject List</a>
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <th>Score</th>
+        </tr>
+        <% dataStudentSubject.Students.forEach((dataStudentSubject) => { %>
+        <tr>
+            <td><%= dataStudentSubject.first_name%> <%= dataStudentSubject.last_name%></td>
+            <td><a href="">Give Score</a></td>
+        </tr>
+        <%})%>
+    </table>
+</body>
+</html>

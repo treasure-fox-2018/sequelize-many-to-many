@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Add Subject Page</title>
+</head>
+<body>
+    <h1>Add Subject To Student</h1>
+    <form action="/student/<%=dataStudent.id%>/add-subject" method="POST">
+        <table>
+            <tr>
+                <th>First Name</th>
+                <td><%=dataStudent.first_name%></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td><%=dataStudent.last_name%></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><%=dataStudent.email%></td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="subject_id">
+                        <% dataSubject.forEach((dataSubject) => { %>
+                            <option value="<%=dataSubject.id%>"><%=dataSubject.subject_name%></option>
+                        <%})%>
+                        </select>
+                    <input type="submit">
+                </td>
+            </tr>
+        </table>
+        <button><a href="/student">Back</a></button>
+    </form>
+</body>
+</html>
