@@ -30,14 +30,15 @@ h2, p {
       </tr>
     </thead>
     <tbody>
-      <% studentSubjectsData.forEach(studentSubject => { %>
+      <% studentSubjectData.forEach(studentSubject => { %>
         <tr>
-          <td><%= studentSubject.StudentId %></td>
+          <td><%= studentSubject.Student.firstName %>
+            <%= studentSubject.Student.lastName %></td>
           <% if(studentSubject.score !== null){ %>
-            <td>studentSubject.score</td>
+            <td><%= studentSubject.score %></td>
           <% } else { %>
-            <td><a href="/subjects/<%=studentSubject.id%>/give-score">Give Score</a></td>
-          } %>
+            <td><a href="/subjects/<%=studentSubject.StudentId%>/give-score/<%=studentSubject.SubjectId%>">Give Score</a></td>
+          <% } %>
         </tr>
       <% })%>
     </tbody>

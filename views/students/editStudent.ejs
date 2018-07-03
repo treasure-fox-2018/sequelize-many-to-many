@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Edit Student</h2>
+
+<form action="/students/<%=student.id%>/edit" method="POST">
+  First name:<br>
+  <input type="text" name="firstName" value="<%=student.firstName%>">
+  <br>
+  Last name:<br>
+  <input type="text" name="lastName" value="<%=student.lastName%>">
+  <br>
+  Email:<br>
+  <input type="text" name="email" value="<%=student.email%>">
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
+</body>
+</html>
