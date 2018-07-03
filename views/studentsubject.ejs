@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <title>Students & Subjects Data</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <h2>Students & Subject List</h2>
+    <h3><%= studentsubjectData[0].subjectName %></h3>
+    <table border="2">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Give Score</th>
+ 
+        </tr>
+        <% studentsubjectData[0].Students.forEach(studentsubject => { %>
+        <tr>
+            <td>
+                <%= studentsubject.id %>
+            </td>
+            <td>
+                <%= studentsubject.firstName %> <%= studentsubject.lastName %>
+            </td>
+
+            <% if (studentsubject.StudentSubject.Score !== null) { %>
+                <td><%= studentsubject.StudentSubject.Score %></td>
+                <% } else { %>
+                    <td><a href="/subjects/<%= studentsubjectData[0].id %>/give-score/<%=studentsubject.id%>">Score</td></a>
+
+                    <% } %>
+        </tr>
+            <% }) %>
+    </thead>
+</table>
+    <br>
+    <a href="/">Back to Home</a>
+    <a href="/subjects">Back to Subjects List</a>
+</body>
+
+</html>

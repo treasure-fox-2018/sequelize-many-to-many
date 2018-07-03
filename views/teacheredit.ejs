@@ -12,9 +12,9 @@
     <h1><%= title %></h1>
     <div>
         <form action="/teachers/edit/<%= editTeacher.id %>" method="post">
-        First Name:<br><input type="text" name="firstName" placeholder="First Name" value="<%= editTeacher.first_name %>"><br><br>
-        Last Name:<br><input type="text" name="lastName" placeholder="Last Name" value="<%= editTeacher.last_name %>"><br><br>
-        Email:<br><input type="text" name="email" placeholder="Email" value="<%= editTeacher.email %>"><br><br>
+        First Name:<br><input type="text" name="firstName" value="<%= editTeacher.firstName %>"><br><br>
+        Last Name:<br><input type="text" name="lastName" value="<%= editTeacher.lastName %>"><br><br>
+        Email:<br><input type="text" name="email" value="<%= editTeacher.email %>"><br><br>
         Subject:<br><input type="integer" name="subject" placeholder="Input SubjectId"><br><br>
         <button type="submit" value="Confirm Edit">Confirm Edit</button>
         </form>

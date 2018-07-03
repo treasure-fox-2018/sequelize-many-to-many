@@ -9,8 +9,8 @@ routesteachers.get('/teachers', (req, res) => {
         include : [models.Subject]
     })
         .then(teachersData => {
-            res.send(teachersData)
-            // res.render('teachers.ejs', { title: "List of Teachers", teachersData: teachersData })
+            // res.send(teachersData)
+            res.render('teachers.ejs', { title: "List of Teachers", teachersData: teachersData })
         })
         .catch(err => {
             res.send(err)
@@ -47,13 +47,18 @@ routesteachers.get('/teachers/edit/:id', (req, res) => {
                 editTeacher: editTeacher
             })
         })
+        .catch(err => {
+            res.send({error: err.message})
+        })
 })
 
 routesteachers.post('/teachers/edit/:id', (req, res) => {
     Teachers.update({
+        id: req.params.id,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        email: req.body.email
+        email: req.body.email,
+        SubjectId: req.body.subject
     }, {
         where: { id: req.params.id }
         })

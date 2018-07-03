@@ -20,6 +20,7 @@
             <th>Subject Name</th>
             <th>Teachers</th>
             <th>Options</th>
+            <th>Enrolled Students</th>
         </tr>
         <% subjectsData.forEach(subject => { %>
             <tr>
@@ -42,6 +43,9 @@
                 <td>
                     <a href="/subjects/edit/<%=subject.id%>">Edit</a> ||
                     <a href="/subjects/delete/<%=subject.id%>" onclick="return confirm('Are you sure you want to delete this subject?')"> Delete</a>
+                </td>
+                <td>
+                    <a href="/subjects/<%=subject.id%>/enrolled-students">Enrolled Students</a>
                 </td>
             </tr>
             <% }) %>

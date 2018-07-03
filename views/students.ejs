@@ -22,6 +22,7 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
+            <th>Subjects</th>
             <th>Actions</th>
             <th>Options</th>
         </tr>
@@ -40,13 +41,27 @@
                     <%= student.email %>
                 </td>
                 <td>
-                    <a href="/students/<% student.id%>add-subject">Add Subject</a>
+                    <ol>
+                    <% student.Subjects.forEach(studentdata => { %>
+                        <% if(student.Subjects.length == 0) { %>
+                            unassigned
+                        <% } else { %>
+                            <li style="list-style-type: none;">
+                                <%= studentdata.subjectName %></li>
+                        <% } %>
+
+                        <% }) %>
+                    </ol>
                 </td>
-                <td>
-                    <a href="/students/edit/<%=student.id%>">Edit</a> ||
-                    <a href="/students/delete/<%=student.id%>" onclick="return confirm('Are you sure you want to delete this student\'s data?')">
-                        Delete</a>
-                </td>
+                
+                            <td>
+                                <a href="/students/<%=student.id%>/add-subject">Add Subject</a>
+                            </td>
+                            <td>
+                                <a href="/students/edit/<%=student.id%>">Edit</a> ||
+                                <a href="/students/delete/<%=student.id%>" onclick="return confirm('Are you sure you want to delete this student\'s data?')">
+                                    Delete</a>
+                            </td>
             </tr>
             <% }) %>
     </table>

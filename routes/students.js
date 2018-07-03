@@ -1,16 +1,17 @@
 const routesstudents = require('express').Router();
 const models = require('../models');
 const Students = models.Student;
+const StudentSubjects = models.StudentSubject;
 const Subjects = models.Subject;
 
 routesstudents.get('/students', (req, res) => {
     // res.send('hello students!')
     Students.findAll({
         order: [['id', 'ASC']],
-        // include: [models.Subject]
+        include: [models.Subject]
     })
     .then(studentsData => {
-        // console.log(studentsData)
+        // res.send(studentsData)
         res.render('students.ejs', {title: 'Students List', studentsData: studentsData})
     })
     .catch(err => {
@@ -27,6 +28,7 @@ routesstudents.post('/students/add', (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
+        SubjectId: req.body.SubjectId,
         createdAt: new Date(),
         updatedAt: new Date()
     })
@@ -50,6 +52,7 @@ routesstudents.get('/students/edit/:id', (req, res) => {
 
 routesstudents.post('/students/edit/:id', (req, res) => {
     Students.update({
+        id: req.params.id,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email
@@ -78,26 +81,30 @@ routesstudents.get('/students/:id/add-subject', (req, res) => {
     Students.findById(req.params.id)
     .then(students => {
         Subjects.findAll()
-        .then(subjects => {
-            res.render('add-subjecttostudent.ejs', {students, subjects, error:null})
+          .then(subjects => {
+            // res.send(subjects)
+    //         res.send(students)
+            res.render('add-subjecttostudent.ejs', {studentsData : students, subjectsData : subjects, error:null})
         })
         
     })
     .catch(err => {
-        res.send(err)
+        res.render('add-subjecttostudent.ejs', {error: err.message})
     })
 })
 
 routesstudents.post('/students/:id/add-subject', (req, res) => {
+    
     StudentSubjects.create({
-        StudentId: id, SubjectId:req.body.SubjectId
+        StudentId: req.params.id, SubjectId: req.body.SubjectId
     })
-    .then(studentsubjectdata => {
+    .then(() => {
         res.redirect('/students')
     })
     .catch(err => {
-        res.render('add-subjecttostudent.ejs', {students, subjects, error: err.message})
+        res.render('add-subjecttostudent.ejs', {error: err.message})
     })
+
 })
 
 module.exports = routesstudents;
