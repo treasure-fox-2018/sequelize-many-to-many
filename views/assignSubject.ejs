@@ -1,0 +1,54 @@
+<html>
+<head>
+  <title>Add Student Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body style="padding: 50px 0px">
+  <div class="container">
+      <p>Go to <a href="/">Home</a> / <a href="/student">Student Page</a></p>
+  </div>
+  <div class="container">
+    <h2>Student Add Form</h2>
+  </div>
+  <div class="container">
+    <form action="/student/add" method="post">
+      <% if (msgerror.length !== 0) { %>
+        <div class="alert alert-danger">
+          <strong>Danger!</strong> <%= msgerror%>
+          </div>
+
+      <% } %>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" name="firstName" placeholder="Your first name">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" name="lastName" placeholder="Your last name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" placeholder="foo@bar.com">
+      </div>
+      <div class="form-group">
+        <label for="subjectId">Subject</label>
+        <select class="form-control" name="subjectChoose">
+          <!--  for each -->
+          <% subjects.forEach(subject => { %>
+              <option> <%= subject.subjectName %></option>
+          <% }) %>
+          <option></option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

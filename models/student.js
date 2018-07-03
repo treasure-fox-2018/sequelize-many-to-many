@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING
   }, {});
   Student.associate = function(models) {
-      Student.belongsToMany(models.Subject, {through: 'SubjectStudent'})
+      Student.belongsToMany(models.Subject, {through: models.SubjectStudent})
       Student.hasMany(models.SubjectStudent)
   };
   return Student;

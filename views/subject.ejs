@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>Subject Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body style="padding: 50px 0px">
+  <div class="container">
+      <p>Go to <a href="/">Home</a></p>
+  </div>
+  <div class="container">
+    <h2>Teacher List</h2>
+  </div>
+  <div class="container">
+    <table class="table table-hover text-center">
+      <thead>
+        <tr>
+          <th>id</id>
+          <th>Subject Name</th>
+          <th>Teachers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% subjects.forEach(subject => { %>
+               <tr>
+                 <td>
+                   <%= subject.id %>
+                 </td>
+                 <td>
+                   <%= subject.subjectName %>
+                 </td>
+                 <td class="text-left">
+                   <ol>
+                       <% subject.Teachers.forEach(teacher => { %>
+                         <li><%= teacher.firstName + ' ' + teacher.lastName %></li>
+                       <% }) %>
+                   <ol>
+                 </td>
+               </tr>
+               <% }) %>
+      </tbody>
+    </table>
+  </div>
+  <div class="container text-center">
+    <button type="button" class="btn btn-info" onclick="window.location.href='/subject/add'">Add Subject</button>
+  </div>
+</body>
+</html>
