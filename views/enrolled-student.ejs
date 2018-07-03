@@ -1,0 +1,49 @@
+<html>
+<head>
+  <title>Student Subject Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body style="padding: 50px 0px">
+  <div class="container">
+      <p>Go to <a href="/">Home</a> / <a href="/subject">Subjects</a></p>
+  </div>
+  <div class="container">
+    <h2 align="center">Students Data by Subject</h2>
+  </div>
+  <div class="container">
+  </br>
+    <table class="table table-hover text-center">
+      <thead>
+        <tr>
+          <th>Name</id>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% if (students.length !== 0) { %>
+              <% students.forEach(student => { %>
+                <tr>
+                  <td>
+                    <%= student.Student.firstName +' '+ student.Student.lastName %>
+                  </td>
+                  <td>
+                      <% if (student.score == null) { %>
+                          <a href="/subject/<%= student.StudentId%>/give-score">Give Score</a>
+                      <% } else { %>
+                          <%= student.score %>
+                      <% } %>
+                  </td>
+                </tr>
+
+              <% }) %>
+          <% } %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

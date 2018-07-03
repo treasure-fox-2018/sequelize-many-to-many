@@ -1,0 +1,57 @@
+[
+  {
+    "StudentId":1,
+    "SubjectId":4,
+    "createdAt":"2018-07-03T07:18:57.119Z",
+    "updatedAt":"2018-07-03T07:18:57.119Z",
+    "Student": {
+      "id":1,
+      "firstName":"Nikolas",
+      "lastName":"Friesen",
+      "email":"agustina_braun@wintheiser.info",
+      "createdAt":"2018-07-03T03:40:30.111Z",
+      "updatedAt":"2018-07-03T03:40:30.111Z"
+    }
+  },
+  {
+    "StudentId":2,
+    "SubjectId":4,
+    "createdAt":"2018-07-03T07:35:36.514Z",
+    "updatedAt":"2018-07-03T07:35:36.514Z",
+    "Student": {
+      "id":2,
+      "firstName":"Randi",
+      "lastName":"Halvorson",
+      "email":"heber.upton@bechtelarwisozk.biz",
+      "createdAt":"2018-07-03T03:40:30.111Z",
+      "updatedAt":"2018-07-03T03:40:30.111Z"
+    }
+  },
+  {
+    "StudentId":9,
+    "SubjectId":4,
+    "createdAt":"2018-07-03T07:35:55.947Z",
+    "updatedAt":"2018-07-03T07:35:55.947Z",
+    "Student": {
+      "id":9,
+      "firstName":"Cary",
+      "lastName":"Schoen",
+      "email":"fay@runolfon.biz",
+      "createdAt":"2018-07-03T03:40:30.111Z",
+      "updatedAt":"2018-07-03T03:40:30.111Z"
+    }
+  },
+  {
+    "StudentId":11,
+    "SubjectId":4,
+    "createdAt":"2018-07-03T07:35:59.987Z",
+    "updatedAt":"2018-07-03T07:35:59.987Z",
+    "Student": {
+      "id":11,
+      "firstName":"Muhamad Haddawi",
+      "lastName":"Hermawan",
+      "email":"muhamadhaddawi@gmail.com",
+      "createdAt":"2018-07-03T06:40:10.209Z",
+      "updatedAt":"2018-07-03T06:40:10.209Z"
+    }
+  }]

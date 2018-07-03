@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>Student Score Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<body style="padding: 50px 0px">
+  <div class="container">
+      <p>Go to <a href="/">Home</a> / <a href="/student">Subject Page</a> / <a href="#">Enrolled Students</a></p>
+  </div>
+  <div class="container">
+    <h2>Add Score to Student</h2>
+  </div>
+  <div class="container">
+    <form action="#" method="post">
+      <% if (msgerror.length !== 0) { %>
+        <div class="alert alert-danger">
+          <strong>Warning</strong> <%= msgerror%>
+          </div>
+      <% } %>
+      <div class="form-group">
+        <label for="firstName">Student Name</label>
+        <input type="text" class="form-control" name="firstName" value="<%= student.firstName +' '+ student.lastName %>" disabled>
+      </div>
+      <div class="form-group">
+        <label for="score">Score</label>
+        <input type="text" class="form-control" name="score" placeholder="Input Score">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
