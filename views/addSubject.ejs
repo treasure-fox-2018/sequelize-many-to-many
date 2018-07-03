@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teachers</title>
+    <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+            </style>
+    
+</head>
+<body>
+    <table  class="table">
+            <thead>
+                 <tr>
+                    <th>id</th>
+                    <th>first_name</th>
+                    <th>last_name</th>
+                    <th>email</th>
+                </tr>
+             </thead>
+            <tbody>
+                
+                <tr>
+                    <td> <%= dataStudent.firstName %></td>
+                    <td> <%= dataStudent.LastName %></td>
+                    <td> <%= dataStudent.email %></td>
+                </tr>
+                <!-- <%})%> -->
+
+            </tbody>
+    </table><br>
+    
+    <form action="/student/addSubject/<%= dataStudent.id %>" method="POST">
+        <%= dataSubject.forEach((dataSubject)=>{
+            <select name="name" size='2'>
+                <option value=
+             </select><br><br>
+        <%= }) %>
+       
+
+    </form>
+    <!-- <div>
+        <a href="/">Back</a>
+    </div> -->
+</body>
+</html>
+
+
+

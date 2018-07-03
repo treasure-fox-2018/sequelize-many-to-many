@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teachers</title>
+    <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+            </style>
+    
+</head>
+<body>
+    
+    <h1>All Data Student</h1><br><br>
+    <!-- <a href="/student/add">add student</a> -->
+   
+    <br><br>
+    
+    <table  class="table">
+            <thead>
+                 <tr>
+                    <th>id</th>
+                    <th>subject_name</th>
+                </tr>
+             </thead>
+            <tbody>
+                
+                <tr>
+                     <%dataSubject.forEach((dataSubject)=> {%>
+                        <td> <%= dataSubject.id %></td>
+                        <td> <%= dataSubject.subjectName %></td>
+                </tr>
+                <%})%>
+
+            </tbody>
+    </table>
+    <div>
+        <a href="/">Back</a>
+    </div>
+</body>
+</html>
+
+
+

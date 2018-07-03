@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teachers</title>
+    <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+            </style>
+    
+</head>
+<body>
+    
+    <h1>All Data Student</h1><br><br>
+    <a href="/student/add">add student</a>
+   
+    <br><br>
+    
+    <table  class="table">
+            <thead>
+                 <tr>
+                    <th>id</th>
+                    <th>first_name</th>
+                    <th>last_name</th>
+                    <th>email</th>
+                    <th>subject</th>
+                    <th>Options</th>
+                </tr>
+             </thead>
+            <tbody>
+                
+                <tr>
+                     <%dataStudent.forEach((dataStudent)=> {%>
+                        <td> <%= dataStudent.id %></td>
+                        <td> <%= dataStudent.firstName %></td>
+                        <td> <%= dataStudent.LastName %></td>
+                        <td> <%= dataStudent.email %></td>
+                        <td> <a href="/student/addSubject">Add Subject</a> </td>
+                       
+                        <td> <a href="/student/edit">Edit</a> | <a href="DELETE">Delete</a> </td>
+                </tr>
+                <%})%>
+
+            </tbody>
+    </table>
+    <div>
+        <a href="/">Back</a>
+    </div>
+</body>
+</html>
+
+
+
