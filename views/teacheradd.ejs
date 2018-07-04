@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
@@ -8,25 +9,51 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <!-- <script src="main.js"></script> -->
 </head>
+
 <body>
-    <h1><%= title %></h1>
+    <%- include('../partials/header.ejs') -%>
+        <h1>
+            <%= title %>
+        </h1>
 
-    <% if (error !== null) { %>
-        <%= error %>
-    <% } %>
+        <% if (error !== null) { %>
+            <%= error %>
+                <% } %>
 
-    <br><br>
-    <div>
-        <form action="/teachers/add" method="post">
-        First Name:<br><input type="text" name="firstName" placeholder="First Name"><br><br>
-        Last Name:<br><input type="text" name="lastName" placeholder="Last Name"><br><br>
-        Email:<br><input type="text" name="email" placeholder="Email"><br><br>
-        Subject:<br><input type="text" name="SubjectId" placeholder="Input SubjectId"><br><br>
-        <button type="submit" value="Submit">Submit</button>
-        </form>
-    </div>
-    <br>
-    <a href="/">Back to Home</a>
-    <a href="/teachers">Back to Teachers List</a>
+                    <br>
+                    <br>
+                    <div>
+                        <form action="/teachers/add" method="post">
+                            First Name:
+                            <br>
+                            <input type="text" name="firstName" placeholder="First Name">
+                            <br>
+                            <br> Last Name:
+                            <br>
+                            <input type="text" name="lastName" placeholder="Last Name">
+                            <br>
+                            <br> Email:
+                            <br>
+                            <input type="text" name="email" placeholder="Email">
+                            <br>
+                            <br> Subject:
+                            <br>
+                            <select name="SubjectId">
+                                <% subjectsData.forEach(subject => { %>
+                                    <option value="<%= subject.id %>">
+                                        <%= subject.subjectName %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                            <br>
+                            <br>
+
+                            <button type="submit" value="Submit">Submit</button>
+                        </form>
+                    </div>
+                    <br>
+                    <a href="/">Back to Home</a>
+                    <a href="/teachers">Back to Teachers List</a>
 </body>
+
 </html>

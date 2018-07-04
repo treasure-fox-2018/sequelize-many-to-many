@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <body>
-
-<% if (error !== null) { %>
+  <% if (error !== null) { %>
     <%= error %>
-<% } %>
+      <% } %>
 
-<h2>Add Subject To Student</h2>
-  <form action="/students/<%=studentsData.id%>/add-subject" method="POST">
-    First name:<br>
-    <input type="text" name="firstName" value="<%=studentsData.firstName %>">
-    <br>
-    Last name:<br>
-    <input type="text" name="lastName" value="<%=studentsData.lastName %>">
-    <br>
-    Email:<br>
-    <input type="text" name="email" value="<%=studentsData.email %>">
-    <br>
-    Choose Subject:<br>
-    <select name= "SubjectId">
-        <% subjectsData.forEach(subject => { %>
-          <option value="<%= subject.id %>"><%= subject.subjectName %>
-            </option>
-            <% }) %>
-        </select>
-    <br><br>
-    <button type="submit" value="Add Subject">Add Subject</button>
-  </form> 
-  <br>
-  <a href="/students">Back to Students List</a>
+        <h2>Add Subject To Student</h2>
+        <form action="/students/<%=studentsData.id%>/add-subject" method="POST">
+          First name:
+          <br>
+          <input type="text" name="firstName" value="<%=studentsData.firstName %>">
+          <br> Last name:
+          <br>
+          <input type="text" name="lastName" value="<%=studentsData.lastName %>">
+          <br> Email:
+          <br>
+          <input type="text" name="email" value="<%=studentsData.email %>">
+          <br> Choose Subject:
+          <br>
+          <select name="SubjectId">
+            <% subjectsData.forEach(subject => { %>
+              <option value="<%= subject.id %>">
+                <%= subject.subjectName %>
+              </option>
+              <% }) %>
+          </select>
+          <br>
+          <br>
+          <button type="submit" value="Add Subject">Add Subject</button>
+        </form>
+        <br>
+        <a href="/students">Back to Students List</a>
 </body>
+
 </html>

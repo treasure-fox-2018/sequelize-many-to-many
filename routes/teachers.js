@@ -1,6 +1,15 @@
 const routesteachers = require('express').Router();
 const models = require('../models');
 const Teachers = models.Teacher;
+const Subjects = models.Subject;
+const teacherHelper = require('../helpers/teacherhelper')
+
+// routesteachers.use( (req, res, next) => {
+//     res.locals.teacherHelper =  teacherHelper
+//     res.locals.title = "Hello world"
+//     next()
+// } )
+
 
 routesteachers.get('/teachers', (req, res) => {
     // res.send('yay teachers')
@@ -10,7 +19,11 @@ routesteachers.get('/teachers', (req, res) => {
     })
         .then(teachersData => {
             // res.send(teachersData)
-            res.render('teachers.ejs', { title: "List of Teachers", teachersData: teachersData })
+            res.render('teachers.ejs', { 
+                title: "List of Teachers", 
+                teachersData: teachersData,  
+                teacherHelper: teacherHelper
+            })
         })
         .catch(err => {
             res.send(err)
@@ -18,7 +31,17 @@ routesteachers.get('/teachers', (req, res) => {
 })
 
 routesteachers.get('/teachers/add', (req, res) => {
-    res.render('teacheradd.ejs', { title: 'Teacher Form' , error : null})
+    Subjects.findAll()
+    .then(subjects => {
+        res.render('teacheradd.ejs', {
+            title: 'Teacher Form', 
+            subjectsData: subjects, 
+            error : null,
+        })
+    })
+    .catch(err => {
+        res.send(err)
+    })
 })
 
 routesteachers.post('/teachers/add', (req, res) => {

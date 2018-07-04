@@ -3,6 +3,7 @@ const models = require('../models');
 const Students = models.Student;
 const StudentSubjects = models.StudentSubject;
 const Subjects = models.Subject;
+const studentHelper = require('../helpers/studenthelper')
 
 routesstudents.get('/students', (req, res) => {
     // res.send('hello students!')
@@ -12,7 +13,11 @@ routesstudents.get('/students', (req, res) => {
     })
     .then(studentsData => {
         // res.send(studentsData)
-        res.render('students.ejs', {title: 'Students List', studentsData: studentsData})
+        res.render('students.ejs', {
+            title: 'Students List', 
+            studentsData: studentsData,
+            studentHelper: studentHelper
+        })
     })
     .catch(err => {
         res.send(err)

@@ -1,6 +1,7 @@
 'use strict'
 const express = require('express');
 const app = express();
+const partial = require('express-partial');
 
 const routeshomepage = require('./routes/homepage');
 const routesteachers = require('./routes/teachers');
@@ -13,6 +14,7 @@ const bodyParser = require('body-parser');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(partial());
 app.use(routeshomepage);
 app.use(routesteachers);
 app.use(routessubjects);
