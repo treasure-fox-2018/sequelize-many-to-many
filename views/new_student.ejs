@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+<body>
+    <h2>Add Students Data</h2>
+    <% if(error == null){ %>
+        <form action="/students" method="POST">
+            First name:<br>
+            <input type="text" name="first_name">
+            <br>
+            Last name:<br>
+            <input type="text" name="last_name">
+            <br>
+            Email:<br>
+            <input type="text" name="email">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    <% } else {%>
+        <h3><%= error %> </h3>
+        <form action="/students" method="POST">
+            First name:<br>
+            <input type="text" name="first_name">
+            <br>
+            Last name:<br>
+            <input type="text" name="last_name">
+            <br>
+            Email:<br>
+            <input type="text" name="email">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    <% } %>
+</body>
+</html>

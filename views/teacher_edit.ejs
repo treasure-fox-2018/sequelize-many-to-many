@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h2>Teachers Form</h2>
+    <form action="/teachers/edit/<%=teacher.id%>" method="POST">
+    <br>
+    First name:<br>
+    <input type="text" name="first_name" value=<%=teacher.first_name%>>
+    <br>
+    Last name:<br>
+    <input type="text" name="last_name" value=<%=teacher.last_name%>
+    <br><br>
+    Email:<br>
+    <input type="text" name="email" value=<%=teacher.email%>
+    <br>
+    <br><br>
+    <button type="submit" onclick="alert('Succesfully updated')" value="submit">submit</button>
+    </form> 
+</body>
+</html>

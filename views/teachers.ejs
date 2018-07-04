@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Teacher List</title>
+
+</head>
+<body>
+    <h2>All Teachers Data</h2>
+    
+    <table>
+        <tr>
+          <th>id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Subject</th>
+          <th>Option</th>
+        </tr>
+        <% for(var i = 0; i < teachers.length; i++) { %>
+            <tr>
+               <td> <%= teachers[i].id %></td>
+               <td> <%= teachers[i].first_name %></td>
+               <td> <%= teachers[i].last_name %></td>
+               <td> <%= teachers[i].email %></td>
+
+               <% if(teachers[i].SubjectId == null){ %>
+                <td> unassigned </td>
+               <% } else {%>
+                <td><%= teachers[i].Subject.subject_name %></td>
+               <% } %>
+               <td><a href="/teachers/edit/<%= teachers[i].id %>">Edit</a></td>
+			   <td><a href="/teachers/delete/<%= teachers[i].id%>" onclick="return confirm('Are you sure?')">Delete</td>
+             </tr>
+
+        <% } %>
+        
+      </table>
+      <br>
+      <ul>
+            <li><a href="/teachers/add">Add Teacher</a></li>
+        </ul>
+
+</body>
+</html>

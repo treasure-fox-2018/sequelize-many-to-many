@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+
+</head>
+<body>
+        <table>
+                <tr>
+                  <th>Name</th>
+                  <th>Score</th>
+                  
+                </tr>
+
+                <% subjects.forEach(function(subject){ %>
+                     <tr>
+                         <td><%= subject.Student.first_name %>  <%= subject.Student.last_name %></td>
+                        <% if(subject.score == null){ %>
+                            <td><a href="/subjects/<%= subject.id %>/<%= subject.Student.id %>/give-score">Give Score</a></td>
+                        <% } else {%>
+                            <td><%= subject.score %></td>
+                        </tr>
+                        <% } %>
+                <% }) %>
+
+              </table>
+              
+</body>
+</html>
