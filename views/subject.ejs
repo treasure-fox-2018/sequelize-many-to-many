@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style> 
+        table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+    </style>    
+</head>
+<body>
+    <h1>All Subject Data</h1>
+    <p>
+        <a href="/">Home</a>
+    </p>
+    <table style="width:100%">
+        <thead>
+            <tr>
+              <th>Id</th>
+              <th>Subject Name</th>
+              <th>Teacher</th>
+              <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% dataSubject.forEach(function(subject){ %>
+                <tr>
+                    <td><%= subject.id %></td>
+                    <td><%= subject.subject_name %></td>
+                    <td>
+                        <ol>
+                            <% if(subject.Students.length === 0){ %>
+                                unassigned
+                            <% }else{ %>
+                                <% subject.Students.forEach(function(student){ %>
+                                    <li><%= student.first_name%> <%= student.last_name%></li>
+                                    <%})%>
+                            <% } %>
+                        </ol>
+                    </td>
+                    <td>
+                        <a href="/subjects/<%= subject.id%>/enrolled-students">Enrolled Students</a>
+                    </td>
+                </tr>
+            <%})%>
+        </tbody>  
+   </table> 
+</body>
+</html>

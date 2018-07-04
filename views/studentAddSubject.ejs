@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add Subject to Student</h1>
+
+    <table style="width:50%">
+        <tbody>
+            <tr>
+                <td>First Name :</td>
+                <td><%= dataStudent.first_name %></td>
+            </tr>
+            <tr>
+                <td>Last Name :</td>
+                <td><%= dataStudent.last_name %></td>
+            </tr>
+            <tr>
+                <td>Email :</td>
+                <td><%= dataStudent.email %></td>
+            </tr>
+        </tbody>  
+    </table><br>
+
+    <h2>Choose Subject</h2>
+    <form action="/students/<%=dataStudent.id%>/add-subject" method="POST">
+        <select name="subjectId" >
+            <% dataSubjects.forEach(function(subject){%>
+                <option value="<%=subject.id%>"><%= subject.subject_name %></option>
+            <%})%>
+        </select><br>
+        <br>
+        <button type="submit">Add Subject</button>
+   </form>   
+</body>
+</html>
