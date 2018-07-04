@@ -54,7 +54,7 @@ router.post('/add', (req, res) => {
 router.get('/edit/:id', (req, res) => {
   models.Teacher.findById(req.params.id)
     .then(dataTeacher => {
-        models.Subject.findAll({
+      models.Subject.findAll({
           order : [["id","ASC"]]
         })
           .then (dataSubjects => {
@@ -88,7 +88,15 @@ router.post('/edit/:id', (req, res) => {
       res.redirect('/teachers')
     })
     .catch(err => {
-      res.render('./teachers/edit', {dataTeacher : req.body , error : err.message})
+       models.Subject.findAll({
+          order : [["id","ASC"]]
+        })
+          .then (dataSubjects => {
+            res.render('./teachers/edit', {dataTeacher : req.body , dataSubjects : dataSubjects, error : err})
+        })
+          .catch (errSubject => {
+            res.render('./teachers/edit', {dataTeacher : req.body , dataSubjects : [], error : errSubject.message })
+          })
     })
 })
 
