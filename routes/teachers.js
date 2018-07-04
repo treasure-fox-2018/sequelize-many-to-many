@@ -18,7 +18,14 @@ router.get('/', (req, res) => {
 
 
 router.get('/add', (req, res) => {
-  res.render('./teachers/add', {dataTeacher : {} , error : null})
+  models.Subject.findAll({
+    order : [["id","ASC"]]
+  })
+  .then (dataSubjects => {
+    res.render('./teachers/add', {dataTeacher : {} , dataSubjects : dataSubjects, error : null})
+  }).catch (err => {
+    res.render('./teachers/add', {dataTeacher : {} , dataSubjects : {}, error : err})
+  })
 })
 
 router.post('/add', (req, res) => {
@@ -31,18 +38,34 @@ router.post('/add', (req, res) => {
     .then(() => {
        res.redirect('/teachers')
     })
-    .catch(err => {
-      res.render('./teachers/add', {dataTeacher : req.body , error : err.message})
+    .catch(errTeacher => {
+      models.Subject.findAll({
+        order : [["id","ASC"]]
+      })
+        .then (dataSubjects => {
+          res.render('./teachers/add', {dataTeacher : req.body , dataSubjects : dataSubjects, error : errTeacher.message})
+        })
+        .catch (errSubject => {
+          res.render('./teachers/add', {dataTeacher : req.body , dataSubjects : [], error : errSubject})
+      })
     })
 })
 
 router.get('/edit/:id', (req, res) => {
   models.Teacher.findById(req.params.id)
     .then(dataTeacher => {
-      res.render('./teachers/edit', {dataTeacher : dataTeacher , error : null})
-    })
-    .catch(err => {
-      res.render('./teachers/edit', {dataTeacher : [] , error : err.message})
+        models.Subject.findAll({
+          order : [["id","ASC"]]
+        })
+          .then (dataSubjects => {
+            res.render('./teachers/edit', {dataTeacher : dataTeacher , dataSubjects : dataSubjects, error : null})
+        })
+          .catch (errSubject => {
+            res.render('./teachers/edit', {dataTeacher : dataTeacher , dataSubjects : [], error : errSubject.message })
+          })
+      })
+    .catch(errTeacher => {
+      res.render('./teachers/edit', {dataTeacher : [] , dataSubjects : [] , error : errTeacher.message})
     })
 })
 

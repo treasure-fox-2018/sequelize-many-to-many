@@ -23,10 +23,16 @@
             <label for="email">Email address</label>
             <input type="text" class="form-control" id="email" name="email" placeholder="Enter email" value = "<%= dataTeacher.email%>">
           </div>
-          <div class="form-group">
-              <label for="SubjectId">Subject Id</label>
-              <input type="text" class="form-control" id="SubjectId" name="SubjectId" placeholder="Enter Subject Id" value = "<%= dataTeacher.SubjectId%>"> 
-            </div>
+          <select class="form-control" name="SubjectId">
+              <% dataSubjects.forEach(subject => { %>
+                <%if (dataTeacher.SubjectId == subject.id) {%>
+                  <option value="<%= subject.id %>" selected><%= subject.subjectName%></option>
+                <%} else {%>
+                  <option value="<%= subject.id %>"><%= subject.subjectName%></option>
+                <%}%>
+              <% }) %>
+          </select>
+          <br>
           <button type="submit" class="btn btn-info">Submit</button>
       </form>
     </main><!-- /.container -->
