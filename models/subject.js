@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       through: 'StudentSubject'
     })
     Subject.hasMany(models.StudentSubject)
+    Subject.hasMany(models.Teacher)
   };
   return Subject;
 };

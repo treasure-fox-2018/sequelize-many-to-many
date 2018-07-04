@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>All Subject Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+</head>
+<body>
+    <h1 style="text-align: center">All Subject Data</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Subject Name</th>
+            <th>Teacher</th>
+            <th>Actions</th>
+        </tr>
+        <% subjects.forEach(subject => { %>
+        <tr>
+                <td><%= subject.id %></td>
+                <td><%= subject.subjectName %></td>
+                    <td><ol>
+                        <% subject.Teachers.forEach(function(teacher){ %>
+                        <li><%= `${teacher.fullName} ${teacher.lastName}`%></li>
+                        <% }) %>
+                    </ol></td>
+                <td><a href="/subjects/<%= subject.id %>/enrolled-students">enrolled-students</a></td>
+            </tr>
+            <% }) %>
+    </table>
+</body>
+</html>
